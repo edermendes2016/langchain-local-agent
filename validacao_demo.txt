@@ -1,0 +1,22 @@
+﻿
+PERGUNTA: Onde está implementada a classe base dos modelos de chat (BaseChatModel) e como o método invoke chega até a geração da resposta?
+
+--- DOCUMENTOS RECUPERADOS DA 'tutorial_collection' ---
+[1] libs/core/langchain_core/language_models/chat_models.py:325  (similaridade 0.638)
+[2] libs/core/langchain_core/language_models/chat_models.py:2703  (similaridade 0.440)
+[3] libs/core/langchain_core/language_models/__init__.py:1  (similaridade 0.434)
+[4] libs/core/langchain_core/messages/ai.py:160  (similaridade 0.404)
+[5] libs/core/langchain_core/language_models/chat_models.py:359  (similaridade 0.389)
+[6] libs/core/langchain_core/outputs/chat_generation.py:17  (similaridade 0.370)
+
+Consultando prism-ml/bonsai-27b em http://localhost:1234/v1 ...
+
+--- RESPOSTA DO AGENTE (30.7s) ---
+
+Com base **apenas** nos trechos de código fornecidos no contexto, aqui está a análise arquitetural solicitada:
+
+1. **Localização da classe `BaseChatModel`**:  
+   A classe base dos modelos de chat é implementada na fonte `[1] libs/core/langchain_core/language_models/chat_models.py:325`. Ela é definida como uma abstração que herda de `BaseLanguageModel[AIMessage]` e `ABC`, servindo como ponto de entrada obrigatório para qualquer implementação customizada, conforme documentado no mesmo arquivo.
+
+2. **Fluxo do método `invoke` até a geração da resposta**:  
+   O contexto fornecido **não contém nenhuma referência ao método `invoke`**, nem descreve o fluxo de execução que leva desse método à geração da resposta. Os trechos disponíveis focam exclusivamente em métodos internos de geração como `_generate`, `_call` e `_agenerate`, bem que a estrutura da classe base e as abstrações relacionadas. Portanto, com os dados fornecidos, não é possível detalhar como o `invoke` chega à geração da resposta.
