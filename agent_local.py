@@ -4,7 +4,7 @@ CLI do agente RAG local.
   python agent_local.py repos                       # lista os repositórios configurados
   python agent_local.py clone -r aws-quiz           # clona o repositório do repos.yaml
   python agent_local.py index -r aws-quiz [--reset] # indexa no ChromaDB
-  python agent_local.py ask "pergunta" -r aws-quiz  # recupera e responde com o LLM local
+  python agent_local.py ask "pergunta" -r aws-quiz  # recupera, reordena e responde com o LLM local
 """
 
 from __future__ import annotations
@@ -51,12 +51,17 @@ def cmd_ask(args):
     if retriever.count() == 0:
         sys.exit(f"A coleção '{cfg.collection}' está vazia. Rode: python agent_local.py index -r {cfg.name}")
 
+    use_rerank = not args.no_rerank
     print(f"\nREPOSITÓRIO: {cfg.name}\nPERGUNTA: {args.question}\n")
-    hits = retriever.retrieve(args.question, k=args.k)
-    print(f"--- DOCUMENTOS RECUPERADOS DA '{cfg.collection}' ---")
+    hits = retriever.retrieve(args.question, k=args.k, rerank=use_rerank, fetch_k=args.fetch_k)
+    modo = "busca vetorial + reranking" if use_rerank else "busca vetorial"
+    print(f"--- DOCUMENTOS RECUPERADOS DA '{cfg.collection}' ({modo}) ---")
     for n, h in enumerate(hits, start=1):
-        print(f"[{n}] {h.ref}  (similaridade {h.vector_score:.3f})")
+        extra = f"rerank {h.rerank_score:+.2f}, posição vetorial #{h.vector_rank}" if use_rerank else ""
+        print(f"[{n}] {h.ref}  (similaridade {h.vector_score:.3f}{', ' + extra if extra else ''})")
 
+    if args.sources_only:
+        return
     if not server_online(cfg):
         sys.exit(f"\nLM Studio indisponível em {cfg.llm_base_url} ou modelo '{cfg.llm_model}' não carregado.\n"
                  "Abra o LM Studio, carregue o modelo e ligue o servidor na aba Model Server.")
@@ -81,6 +86,9 @@ def main():
     add_repo(p_ask)
     p_ask.add_argument("question")
     p_ask.add_argument("-k", type=int, default=6, help="Quantidade de blocos enviados ao LLM")
+    p_ask.add_argument("--no-rerank", action="store_true", help="Usa só a busca vetorial")
+    p_ask.add_argument("--fetch-k", type=int, default=None, help="Candidatos buscados antes do reranking")
+    p_ask.add_argument("--sources-only", action="store_true", help="Mostra só as fontes, sem chamar o LLM")
 
     args = parser.parse_args()
     {"repos": cmd_repos, "clone": cmd_clone, "index": cmd_index, "ask": cmd_ask}[args.cmd](args)

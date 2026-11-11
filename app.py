@@ -38,6 +38,8 @@ with st.sidebar:
     cfg = get_repo(repo)
     retriever = load_retriever(repo)
     k = st.slider("Blocos enviados ao LLM (k)", 1, 15, 6)
+    use_rerank = st.toggle("Reranking com cross-encoder", value=True,
+                           help="Busca 4x mais candidatos e reordena com um cross-encoder antes de escolher os k melhores.")
     use_llm = st.toggle("Gerar resposta com o LLM local", value=True,
                         help="Desligue para navegar apenas pelas fontes recuperadas (instantâneo).")
 
@@ -66,7 +68,7 @@ with st.form("pergunta"):
 
 if submitted and question.strip():
     with st.spinner("Buscando trechos no ChromaDB..."):
-        hits = retriever.retrieve(question.strip(), k=k)
+        hits = retriever.retrieve(question.strip(), k=k, rerank=use_rerank)
     text, secs = None, None
     if use_llm:
         if not online:
@@ -77,21 +79,24 @@ if submitted and question.strip():
                     text, secs = answer(cfg, question.strip(), hits)
                 except Exception as exc:  # noqa: BLE001
                     st.error(f"Falha ao consultar o LLM: {exc}")
-    st.session_state.history.insert(0, {"repo": repo, "question": question.strip(), "k": k,
+    st.session_state.history.insert(0, {"repo": repo, "question": question.strip(), "k": k, "rerank": use_rerank,
                                         "hits": hits, "answer": text, "secs": secs})
 
 # ----------------------------------------------------------------------------- resultados
 for i, item in enumerate(st.session_state.history):
     with st.container(border=True):
         st.subheader(item["question"])
-        st.caption(f"Repositório: {item['repo']}  |  k = {item['k']}")
+        st.caption(f"Repositório: {item['repo']}  |  k = {item['k']}  |  "
+                   + ("busca vetorial + reranking" if item["rerank"] else "somente busca vetorial"))
         if item["answer"]:
             st.markdown(f"**Resposta** ({item['secs']:.0f}s)")
             st.markdown(item["answer"])
 
         st.markdown("**Fontes recuperadas**")
         st.dataframe(
-            [{"#": n, "Arquivo": h.source, "Linha": h.start_line, "Similaridade": round(h.vector_score, 3)}
+            [{"#": n, "Arquivo": h.source, "Linha": h.start_line, "Similaridade": round(h.vector_score, 3),
+              "Posição vetorial": h.vector_rank,
+              "Score rerank": None if h.rerank_score is None else round(h.rerank_score, 2)}
              for n, h in enumerate(item["hits"], start=1)],
             hide_index=True, width="stretch",
         )
