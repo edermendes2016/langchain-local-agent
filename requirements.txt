@@ -7,4 +7,6 @@ langchain-openai
 langchain-text-splitters
 tiktoken
 sentence-transformers
-python-dotenv
+streamlit
+pyyaml
+requests

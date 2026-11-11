@@ -4,3 +4,4 @@ langchain_repo/
 __pycache__/
 *.pyc
 .env
+repos/

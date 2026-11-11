@@ -1,23 +1,25 @@
-# Agente RAG local para o código do LangChain
+# Agente RAG local para repositórios de código
 
-Passo a passo para rodar tudo na sua máquina: um modelo local no LM Studio, um banco vetorial ChromaDB e um script Python que responde perguntas sobre o código-fonte do LangChain citando arquivo e linha.
+Pergunte em português sobre qualquer repositório de código e receba respostas ancoradas em trechos reais, com arquivo e linha. Tudo roda na sua máquina: embeddings locais, banco vetorial ChromaDB e um LLM local no LM Studio. Nenhum código sai do computador.
 
-## Roteiro
+Dois repositórios já vêm configurados como exemplo: o núcleo do **LangChain** (`libs/core/langchain_core`) e o **aws-sandbox-quiz-da-nuvem** (Python, JavaScript, HTML, YAML e shell misturados).
 
-1. [Subir o LLM local no LM Studio](1-LM-Studio)
-2. [Preparar o ambiente Python](2-Ambiente-Python)
-3. [Indexar o código no ChromaDB](3-Indexacao)
-4. [Enviar um prompt e receber a resposta](4-Consulta-RAG)
-5. [Problemas comuns](5-Problemas-comuns)
+## Passo a passo
 
-## Como funciona, em uma linha
+1. [LM Studio](LM-Studio): subir o modelo local e o servidor
+2. [Ambiente Python](Ambiente-Python): instalar dependências
+3. [Indexação](Indexacao): gravar o código no ChromaDB
+4. [Consulta RAG](Consulta-RAG): enviar o prompt e receber a resposta
+5. [Interface Streamlit](Interface-Streamlit): navegar por perguntas, fontes e trechos
+6. [Outro repositório](Outro-repositorio): apontar o agente para qualquer projeto
 
-pergunta → `collection.query()` no ChromaDB → trechos de código relevantes → `ChatOpenAI` apontando para o LM Studio (`prism-ml/bonsai-27b`) → resposta com fontes.
+## Decisões técnicas
 
-## Requisitos
+- [Boas práticas de RAG aplicadas](Boas-praticas-RAG)
+- [Reranking](Reranking)
+- [Avaliação com perguntas de referência](Avaliacao)
+- [Problemas comuns](Problemas-comuns)
 
-- Windows 11, Python 3.12, Git
-- LM Studio com o modelo `prism-ml/bonsai-27b` baixado
-- Cerca de 3 GB livres em disco para as dependências (o PyTorch é a maior parte)
+## Fluxo em uma linha
 
-Código: https://github.com/edermendes2016/langchain-local-agent
+pergunta → busca vetorial no ChromaDB (`collection.query()`) → reranking → trechos com arquivo e linha → `ChatOpenAI` apontando para o LM Studio → resposta citando as fontes.

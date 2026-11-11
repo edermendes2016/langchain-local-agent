@@ -1,0 +1,30 @@
+# Repositórios que o agente sabe indexar e consultar.
+# Para adicionar outro: copie um bloco, ajuste url/path/include e rode
+#   python agent_local.py clone -r <nome> && python agent_local.py index -r <nome>
+
+defaults:
+  chunk_size: 1500
+  chunk_overlap: 200
+  embedding_model: all-MiniLM-L6-v2
+  reranker_model: cross-encoder/ms-marco-MiniLM-L-6-v2
+  llm_base_url: http://localhost:1234/v1
+  llm_model: prism-ml/bonsai-27b
+  exclude: ["**/node_modules/**", "**/.git/**", "**/__pycache__/**", "**/*.min.js"]
+
+default_repo: langchain
+
+repos:
+  langchain:
+    description: Núcleo do LangChain (langchain_core)
+    url: https://github.com/langchain-ai/langchain.git
+    path: langchain_repo
+    scope: libs/core/langchain_core
+    include: ["**/*.py"]
+    collection: tutorial_collection
+
+  aws-quiz:
+    description: Quiz da nuvem na AWS (Lambda, front-end e infraestrutura)
+    url: https://github.com/edermendes2016/aws-sandbox-quiz-da-nuvem.git
+    path: repos/aws-sandbox-quiz-da-nuvem
+    scope: .
+    include: ["**/*.py", "**/*.js", "**/*.html", "**/*.css", "**/*.sh", "**/*.yaml", "**/*.md"]
