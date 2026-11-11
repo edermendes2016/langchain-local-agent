@@ -1,0 +1,582 @@
+{
+  "repo": "aws-quiz",
+  "date": "2026-11-11",
+  "fetch_k": 40,
+  "metrics": {
+    "vector": {
+      "hit@1": 0.08333333333333333,
+      "recall@1": 0.08333333333333333,
+      "hit@3": 0.25,
+      "recall@3": 0.25,
+      "hit@5": 0.3333333333333333,
+      "recall@5": 0.2916666666666667,
+      "MRR": 0.20625000000000002
+    },
+    "rerank": {
+      "hit@1": 0.3333333333333333,
+      "recall@1": 0.2916666666666667,
+      "hit@3": 0.5,
+      "recall@3": 0.4583333333333333,
+      "hit@5": 0.75,
+      "recall@5": 0.75,
+      "MRR": 0.4756944444444444
+    }
+  },
+  "questions": [
+    {
+      "id": "aq01",
+      "question": "Onde são validados o nome do jogador e a pontuação enviados ao ranking?",
+      "expected": [
+        "backend/lambda_function.py"
+      ],
+      "vector": {
+        "rank": null,
+        "files": [
+          "frontend/index.html",
+          "frontend/index.html",
+          "frontend/questions.js",
+          "frontend/app.js",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/app.js",
+          "frontend/app.js",
+          "frontend/questions.js",
+          "frontend/questions.js"
+        ]
+      },
+      "rerank": {
+        "rank": null,
+        "files": [
+          "frontend/app.js",
+          "README.md",
+          "frontend/config.js",
+          "frontend/index.html",
+          "frontend/questions.js",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq02",
+      "question": "Como o backend Lambda valida a resposta do usuário no quiz?",
+      "expected": [
+        "backend/lambda_function.py"
+      ],
+      "vector": {
+        "rank": 6,
+        "files": [
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "backend/lambda_function.py",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/index.html",
+          "frontend/questions.js"
+        ]
+      },
+      "rerank": {
+        "rank": 4,
+        "files": [
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "README.md",
+          "backend/lambda_function.py",
+          "scripts/user-data.sh",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "scripts/deploy.sh",
+          "backend/lambda_function.py"
+        ]
+      }
+    },
+    {
+      "id": "aq03",
+      "question": "Qual a pontuação máxima por pergunta que o backend aceita?",
+      "expected": [
+        "backend/lambda_function.py"
+      ],
+      "vector": {
+        "rank": null,
+        "files": [
+          "frontend/index.html",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/app.js",
+          "frontend/app.js",
+          "frontend/index.html",
+          "frontend/questions.js"
+        ]
+      },
+      "rerank": {
+        "rank": null,
+        "files": [
+          "frontend/app.js",
+          "frontend/questions.js",
+          "frontend/app.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/app.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq04",
+      "question": "Qual tabela do DynamoDB guarda as pontuações e qual o modo de cobrança?",
+      "expected": [
+        "infra/template.yaml"
+      ],
+      "vector": {
+        "rank": null,
+        "files": [
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/questions.js",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "README.md"
+        ]
+      },
+      "rerank": {
+        "rank": 4,
+        "files": [
+          "frontend/questions.js",
+          "frontend/app.js",
+          "frontend/questions.js",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/questions.js",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq05",
+      "question": "Como é configurado o acesso HTTP público à função Lambda e o CORS?",
+      "expected": [
+        "infra/template.yaml"
+      ],
+      "vector": {
+        "rank": null,
+        "files": [
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/config.js",
+          "frontend/questions.js",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js"
+        ]
+      },
+      "rerank": {
+        "rank": 4,
+        "files": [
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "infra/template.yaml",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/config.js",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq06",
+      "question": "Quais recursos da AWS a stack do CloudFormation cria?",
+      "expected": [
+        "infra/template.yaml"
+      ],
+      "vector": {
+        "rank": 8,
+        "files": [
+          "frontend/questions.js",
+          "scripts/limpar.sh",
+          "frontend/questions.js",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "frontend/questions.js"
+        ]
+      },
+      "rerank": {
+        "rank": 8,
+        "files": [
+          "scripts/limpar.sh",
+          "scripts/deploy.sh",
+          "frontend/questions.js",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq07",
+      "question": "Como o script de deploy injeta a URL da API no front-end?",
+      "expected": [
+        "scripts/deploy.sh"
+      ],
+      "vector": {
+        "rank": 10,
+        "files": [
+          "frontend/config.js",
+          "frontend/questions.js",
+          "scripts/user-data.sh",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "scripts/deploy.sh"
+        ]
+      },
+      "rerank": {
+        "rank": 3,
+        "files": [
+          "frontend/config.js",
+          "README.md",
+          "scripts/deploy.sh",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/app.js",
+          "README.md",
+          "scripts/user-data.sh",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq08",
+      "question": "Como remover todos os recursos criados na AWS?",
+      "expected": [
+        "scripts/limpar.sh"
+      ],
+      "vector": {
+        "rank": 3,
+        "files": [
+          "frontend/questions.js",
+          "README.md",
+          "scripts/limpar.sh",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "scripts/deploy.sh",
+          "frontend/questions.js",
+          "README.md"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "scripts/limpar.sh",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "README.md",
+          "frontend/questions.js",
+          "scripts/deploy.sh",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html"
+        ]
+      }
+    },
+    {
+      "id": "aq09",
+      "question": "Quantos segundos o jogador tem por pergunta e como é calculado o bônus de velocidade?",
+      "expected": [
+        "frontend/app.js"
+      ],
+      "vector": {
+        "rank": 2,
+        "files": [
+          "frontend/questions.js",
+          "frontend/app.js",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/config.js",
+          "frontend/app.js",
+          "frontend/app.js",
+          "frontend/index.html"
+        ]
+      },
+      "rerank": {
+        "rank": 2,
+        "files": [
+          "README.md",
+          "frontend/app.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/app.js",
+          "frontend/questions.js",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq10",
+      "question": "Como o front-end guarda o ranking quando a API não está configurada?",
+      "expected": [
+        "frontend/app.js",
+        "frontend/config.js"
+      ],
+      "vector": {
+        "rank": 4,
+        "files": [
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/config.js",
+          "frontend/questions.js",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/questions.js"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "frontend/config.js",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/app.js",
+          "scripts/user-data.sh",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "scripts/deploy.sh",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq11",
+      "question": "Onde estão os testes automatizados do backend?",
+      "expected": [
+        "tests/test_lambda.py"
+      ],
+      "vector": {
+        "rank": null,
+        "files": [
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "scripts/user-data.sh",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "README.md",
+          "frontend/index.html",
+          "frontend/config.js"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "tests/test_lambda.py",
+          "tests/test_lambda.py",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "infra/template.yaml",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/app.js",
+          "frontend/questions.js",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq12",
+      "question": "Onde ficam as perguntas do quiz com alternativas e explicações?",
+      "expected": [
+        "frontend/questions.js"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/config.js"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/app.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "README.md"
+        ]
+      }
+    }
+  ],
+  "answers": [
+    {
+      "id": "aq01",
+      "seconds": 76.2,
+      "answer": "Com base **apenas** nos trechos fornecidos, a resposta é:\n\n- A validação do nome ocorre exclusivamente no lado do cliente e de forma básica: o campo HTML possui os atributos `required` e `maxlength=\"20\"`, que impedem o envio vazio e limitam o tamanho antes da submissão (`[4] frontend/index.html:37`). No JavaScript, a função `salvarPlacar` remove espaços em branco, corta o nome para 20 caracteres e verifica se está vazio antes de prosseguir (`[1] frontend/app.js:199-205`).\n- Quanto à pontuação e ao envio para o ranking, **o contexto não é suficiente** para identificar validações. A função `enviarPontuacao` é chamada sem lógica de verificação adicional no snippet fornecido (`[1] frontend/app.js:206-207`), e a infraestrutura backend (Lambda/DynamoDB) está apenas descrita na CloudFormation, sem código de validação (`[6] infra/template.yaml`). Portanto, não há evidências no contexto para validações no servidor ou específicas para a pontuação.",
+      "cites_expected_file": false,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "aq02",
+      "seconds": 77.6,
+      "answer": "O backend Lambda valida a resposta do usuário através da função `validate(data)` em `[4] backend/lambda_function.py:41`. A lógica de validação ocorre em quatro etapas sequenciais, conforme detalhado abaixo:\n\n- **Validação do nome:** O campo é convertido para string, tem os espaços em branco removidos e é testado contra uma expressão regular. Se não atender ao formato permitido (1 a 20 caracteres, letras, números, espaço, ponto ou hifen), a função retorna um erro `[4] backend/lambda_function.py:41`.\n- **Validação de tipos:** Os campos `score`, `correct` e `total` são extraídos do payload e tentativamente convertidos para inteiros. Em caso de falta de chave, tipo incorreto ou exceção na conversão, retorna uma mensagem de erro `[4] backend/lambda_function.py:41`.\n- **Validação de limites estruturais:** Verifica-se se `total` está entre 1 e `MAX_QUESTIONS`, e se `correct` está entre 0 e `total`. Caso contrário, retorna um erro `[4] backend/lambda_function.py:41`.\n- **Validação da pontuação:** Garante que o `score` esteja dentro do intervalo válido (0 até `correct * MAX_POINTS_PER_QUESTION`). Se violado, retorna um erro `[4] backend/lambda_function.py:41`.\n\nEm caso de sucesso em todas as etapas, a função retorna uma tupla contendo o dicionário validado e `None` como mensagem de erro. Caso falhe em qualquer ponto, retorna `(None, \"mensagem do erro\")`, permitindo que o Lambda rejeite ou processe a resposta conforme necessário `[4] backend/lambda_function.py:41`.",
+      "cites_expected_file": true,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": true
+    },
+    {
+      "id": "aq03",
+      "seconds": 92.1,
+      "answer": "Baseado exclusivamente no contexto fornecido, não há código ou configuração de backend que indique qual pontuação máxima por pergunta é aceita pelo servidor `[3] frontend/app.js` e `[2] frontend/questions.js` expõem apenas a lógica do cliente. \n\nNo entanto, conforme as constantes definidas no frontend, o máximo teórico de pontos por questão é calculado somando os pontos base com o bônus máximo:\n- Os pontos base são fixados em 100 `[3] frontend/app.js`.\n- O bônus máximo é definido como 50 `[3] frontend/app.js], e a fórmula de cálculo está em `[1] frontend/app.js:167`: `var bonus = Math.round(BONUS_MAXIMO * Math.max(0, 1 - passou / TEMPO_POR_PERGUNTA));`.\nSomando ambos, o máximo possível por pergunta no código fornecido é 150 pontos. Para a pontuação realmente aceita pelo backend, seria necessário consultar os contratos de API ou o código do servidor, que não estão presentes neste contexto.",
+      "cites_expected_file": false,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "aq04",
+      "seconds": 51.5,
+      "answer": "Com base exclusivamente no contexto fornecido:\n\n- A tabela do DynamoDB que guarda as pontuações é chamada de **QuizDaNuvemScores** [4] infra/template.yaml:1.\n- Quanto ao modo de cobrança, o contexto não especifica explicitamente um modelo detalhado (ex.: pay-per-use ou on-demand), apenas descreve o serviço como **serverless** [1] frontend/questions.js:51. Caso a informação sobre o modelo de cobrança seja crítica para a análise, ela está insuficiente no texto fornecido.",
+      "cites_expected_file": true,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "aq05",
+      "seconds": 49.9,
+      "answer": "Com base nos trechos fornecidos no contexto, **não há informações suficientes** para responder à pergunta sobre a configuração do acesso HTTP público à função Lambda e ao CORS. \n\nO contexto inclui apenas referências ao uso do AWS Lambda com Function URL para o ranking ([5] README.md:1) e perguntas de quiz conceituais relacionadas a ele ([1] frontend/questions.js:102, [6] frontend/questions.js:1), mas não apresenta nenhum recurso de infraestrutura (como CloudFormation, API Gateway ou configuração de endpoint público) que defina a exposição via HTTP ou as políticas CORS. Para responder corretamente, seria necessário acessar os arquivos de infraestrutura que contêm a definição da função Lambda e seu roteamento público.",
+      "cites_expected_file": false,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "aq06",
+      "seconds": 41.7,
+      "answer": "Com base no contexto fornecido, a stack do CloudFormation cria os seguintes recursos da AWS:\n\n- Um bucket [1] scripts/limpar.sh:1\n- Uma tabela [1] scripts/limpar.sh:1\n- Uma função Lambda [1] scripts/limpar.sh:1\n\nEssas informações são explicitamente confirmadas na explicação de uma pergunta do frontend, que afirma que \"Este projeto usa um template para criar o bucket, a tabela e a Lambda\" [3] frontend/questions.js:161.",
+      "cites_expected_file": false,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "aq07",
+      "seconds": 127.2,
+      "answer": "O script de deploy injeta a URL da API no front-end através dos seguintes passos, conforme o contexto fornecido:\n\n- Ele recupera a `API_URL` gerada pela stack CloudFormation e usa-a para sobrescrever o arquivo `config.js` dentro de uma cópia temporária do frontend. `[3] scripts/deploy.sh:40-44]`\n- O processo começa ao criar uma diretória temporária, copiando toda a estrutura do `frontend/` para ela e substituindo o conteúdo do `config.js` com um novo bloco que define `window.QUIZ_CONFIG` contendo a URL. `[3] scripts/deploy.sh:41-44]`\n- Essa cópia modificada é sincronizada para o bucket S3, garantindo que apenas a versão com a URL real seja publicada ao usuário. `[1] frontend/config.js:1]`",
+      "cites_expected_file": true,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": true
+    },
+    {
+      "id": "aq08",
+      "seconds": 85.5,
+      "answer": "Para remover todos os recursos criados na AWS, deve-se executar o script `scripts/limpar.sh`, conforme indicado no README [2] README.md:1. O script atua removendo o bucket S3 e apagando a stack do CloudFormation associada à aplicação [1] scripts/limpar.sh:1]. Os passos específicos implementados são:\n- Verifica se o bucket existe e, caso seja, remove todos os objetos recursivamente [1] scripts/limpar.sh:8-9.\n- Apaga a stack do CloudFormation com o nome da variável `STACK` [1] scripts/limpar.sh:12-13].\n- Aguarda a conclusão da remoção da stack antes de finalizar [1] scripts/limpar.sh:14.\nA região AWS utilizada é definida por variáveis de ambiente ou CLI, com um padrão de fallback para `us-west-2` [1] scripts/limpar.sh:5-7].",
+      "cites_expected_file": true,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "aq09",
+      "seconds": 45.3,
+      "answer": "Com base nos trechos fornecidos:\n\n- O jogador tem **20 segundos** por pergunta. [1] README.md e [2] frontend/app.js:6\n- Quanto ao bônus de velocidade, o código declara `var BONUS_MAXIMO = 50; // bônus por responder rápido`, indicando que existe um teto máximo de 50 pontos. No entanto, os trechos fornecidos **não contêm a lógica, fórmula ou variáveis** utilizadas para calcular esse valor com base no tempo restante. Portanto, não é possível determinar como o bônus é calculado com os dados disponíveis.",
+      "cites_expected_file": true,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": true
+    },
+    {
+      "id": "aq10",
+      "seconds": 38.0,
+      "answer": "De acordo com o contexto fornecido, quando a API não está configurada (`apiUrl` vazio), o ranking é salvo exclusivamente no navegador do usuário. O comportamento é descrito nos seguintes trechos:\n\n- No arquivo de configuração, é explicitado que `\"o ranking fica salvo só no navegador\"` quando a URL da API está vazia [1] frontend/config.js:1.\n- Na documentação do projeto, indica-se que `\"Sem AWS: abra `frontend/index.html` no navegador (o ranking fica salvo só no navegador)\"` [2] README.md:1.\n- No código da aplicação, a mensagem de status exibe diretamente: `\"Modo local: o ranking fica salvo apenas neste navegador.\"` quando a variável `apiUrl` não possui valor válido [5] frontend/app.js:199.\n\nO contexto não fornece detalhes técnicos sobre a implementação específica utilizada pelo front-end para persistir os dados nesse modo (por exemplo, se utiliza `localStorage`, `sessionStorage` ou outro mecanismo de cache do navegador).",
+      "cites_expected_file": true,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": true
+    },
+    {
+      "id": "aq11",
+      "seconds": 44.1,
+      "answer": "Os testes automatizados do backend estão localizados no arquivo `tests/test_lambda.py` [1] tests/test_lambda.py:1. O contexto fornece trechos desse arquivo que demonstram a estrutura da suite de testes utilizando o framework `unittest`, incluindo configurações de ambiente e classes de teste.",
+      "cites_expected_file": true,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": true
+    },
+    {
+      "id": "aq12",
+      "seconds": 60.5,
+      "answer": "As perguntas do quiz estão localizadas no arquivo `frontend/questions.js` [1] frontend/questions.js:1. Elas são armazenadas na array global `window.QUIZ_PERGUNTAS` [1] frontend/questions.js:1. Os trechos fornecidos demonstram que a estrutura é distribuída nas linhas indicadas [2] frontend/questions.js:102, [3] frontend/questions.js:184, [4] frontend/questions.js:74 e [6] frontend/questions.js:51. Cada elemento da array contém os campos `pergunta`, `alternativas` e `explicacao` [1] frontend/questions.js:1.",
+      "cites_expected_file": true,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    }
+  ]
+}

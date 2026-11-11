@@ -1,0 +1,75 @@
+# Perguntas de referência para o repositório "langchain" (escopo libs/core/langchain_core).
+# expected_files: caminhos (a partir da raiz do clone) onde está a resposta correta, conferidos no código.
+# keywords: termos que uma boa resposta deve mencionar.
+- id: lc01
+  question: Onde fica definida a classe base abstrata dos modelos de chat?
+  expected_files: [libs/core/langchain_core/language_models/chat_models.py]
+  keywords: [BaseChatModel]
+- id: lc02
+  question: Que classe implementa o encadeamento de runnables com o operador pipe, executando um depois do outro?
+  expected_files: [libs/core/langchain_core/runnables/base.py]
+  keywords: [RunnableSequence]
+- id: lc03
+  question: Onde está a classe que executa vários runnables em paralelo sobre a mesma entrada?
+  expected_files: [libs/core/langchain_core/runnables/base.py]
+  keywords: [RunnableParallel]
+- id: lc04
+  question: Qual classe representa a mensagem de resposta da IA, com chamadas de ferramenta e metadados de uso?
+  expected_files: [libs/core/langchain_core/messages/ai.py]
+  keywords: [AIMessage]
+- id: lc05
+  question: Onde é definido o template de prompt para conversas com lista de mensagens de sistema e de usuário?
+  expected_files: [libs/core/langchain_core/prompts/chat.py]
+  keywords: [ChatPromptTemplate]
+- id: lc06
+  question: Que parser converte a saída do modelo em texto simples?
+  expected_files: [libs/core/langchain_core/output_parsers/string.py]
+  keywords: [StrOutputParser]
+- id: lc07
+  question: Onde está o decorador que transforma uma função Python em uma ferramenta para agentes?
+  expected_files: [libs/core/langchain_core/tools/convert.py]
+  keywords: [tool]
+- id: lc08
+  question: Qual é a interface abstrata dos recuperadores de documentos e qual método eles implementam?
+  expected_files: [libs/core/langchain_core/retrievers.py]
+  keywords: [BaseRetriever]
+- id: lc09
+  question: Onde fica a classe Document que guarda o conteúdo da página e os metadados?
+  expected_files: [libs/core/langchain_core/documents/base.py]
+  keywords: [Document]
+- id: lc10
+  question: Onde está o gerenciador de callbacks que dispara eventos de início e fim de execução?
+  expected_files: [libs/core/langchain_core/callbacks/manager.py]
+  keywords: [CallbackManager]
+- id: lc11
+  question: Existe um vector store em memória? Onde ele é implementado?
+  expected_files: [libs/core/langchain_core/vectorstores/in_memory.py]
+  keywords: [InMemoryVectorStore]
+- id: lc12
+  question: Qual interface define como textos são convertidos em embeddings?
+  expected_files: [libs/core/langchain_core/embeddings/embeddings.py]
+  keywords: [Embeddings]
+- id: lc13
+  question: Como é implementado o cache em memória das respostas dos modelos?
+  expected_files: [libs/core/langchain_core/caches.py]
+  keywords: [InMemoryCache]
+- id: lc14
+  question: Onde está o limitador de taxa de requisições em memória para chamadas de modelo?
+  expected_files: [libs/core/langchain_core/rate_limiters.py]
+  keywords: [InMemoryRateLimiter]
+- id: lc15
+  question: Qual função garante uma configuração RunnableConfig válida, preenchendo valores padrão?
+  expected_files: [libs/core/langchain_core/runnables/config.py]
+  keywords: [ensure_config]
+- id: lc16
+  question: Onde está o template de prompt com exemplos few-shot?
+  expected_files: [libs/core/langchain_core/prompts/few_shot.py]
+  keywords: [FewShotPromptTemplate]
+- id: lc17
+  question: Qual classe interpreta a saída do modelo como JSON?
+  expected_files: [libs/core/langchain_core/output_parsers/json.py]
+  keywords: [JsonOutputParser]
+- id: lc18
+  question: Onde está a função que corta uma lista de mensagens para caber em um limite de tokens?
+  expected_files: [libs/core/langchain_core/messages/utils.py]
+  keywords: [trim_messages]

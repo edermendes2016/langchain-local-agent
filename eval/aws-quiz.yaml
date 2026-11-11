@@ -1,0 +1,50 @@
+# Perguntas de referência para o repositório "aws-quiz".
+# expected_files: caminhos (a partir da raiz do clone) onde está a resposta correta, conferidos no código.
+- id: aq01
+  question: Onde são validados o nome do jogador e a pontuação enviados ao ranking?
+  expected_files: [backend/lambda_function.py]
+  keywords: [validate]
+- id: aq02
+  question: Como o backend Lambda valida a resposta do usuário no quiz?
+  expected_files: [backend/lambda_function.py]
+  keywords: [score]
+- id: aq03
+  question: Qual a pontuação máxima por pergunta que o backend aceita?
+  expected_files: [backend/lambda_function.py]
+  keywords: ["150"]
+- id: aq04
+  question: Qual tabela do DynamoDB guarda as pontuações e qual o modo de cobrança?
+  expected_files: [infra/template.yaml]
+  keywords: [PAY_PER_REQUEST]
+- id: aq05
+  question: Como é configurado o acesso HTTP público à função Lambda e o CORS?
+  expected_files: [infra/template.yaml]
+  keywords: [Function]
+- id: aq06
+  question: Quais recursos da AWS a stack do CloudFormation cria?
+  expected_files: [infra/template.yaml]
+  keywords: [Lambda]
+- id: aq07
+  question: Como o script de deploy injeta a URL da API no front-end?
+  expected_files: [scripts/deploy.sh]
+  keywords: [config.js]
+- id: aq08
+  question: Como remover todos os recursos criados na AWS?
+  expected_files: [scripts/limpar.sh]
+  keywords: [delete-stack]
+- id: aq09
+  question: Quantos segundos o jogador tem por pergunta e como é calculado o bônus de velocidade?
+  expected_files: [frontend/app.js]
+  keywords: ["20"]
+- id: aq10
+  question: Como o front-end guarda o ranking quando a API não está configurada?
+  expected_files: [frontend/app.js, frontend/config.js]
+  keywords: [localStorage]
+- id: aq11
+  question: Onde estão os testes automatizados do backend?
+  expected_files: [tests/test_lambda.py]
+  keywords: [unittest]
+- id: aq12
+  question: Onde ficam as perguntas do quiz com alternativas e explicações?
+  expected_files: [frontend/questions.js]
+  keywords: [categoria]
