@@ -23,6 +23,11 @@ Dois repositórios já vêm configurados como exemplo: o núcleo do **LangChain*
 - [Avaliação com perguntas de referência](Avaliacao)
 - [Problemas comuns](Problemas-comuns)
 
-## Fluxo em uma linha
+## Como funciona
 
-pergunta → busca vetorial no ChromaDB (`collection.query()`) → reranking → trechos com arquivo e linha → `ChatOpenAI` apontando para o LM Studio → resposta citando as fontes.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="images/fluxo-simples-dark.svg">
+  <img alt="Fluxo em seis passos: código, blocos, busca vetorial, contexto, prompt e resposta" src="images/fluxo-simples-light.svg" width="100%">
+</picture>
+
+A visão completa, com os serviços do Docker, está em [Rodar tudo com Docker](Docker).

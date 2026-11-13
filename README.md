@@ -16,18 +16,12 @@ Quando o log mostrar **"Pronto! Abra http://localhost:8501"**, abra o endereço 
 
 ## Arquitetura
 
-```mermaid
-flowchart LR
-  U([Navegador :8501]) --> A
-  subgraph docker compose
-    A[agent<br/>Streamlit + RAG] -->|query| C[(chroma<br/>vetores)]
-    A -->|embeddings e resposta| O[ollama<br/>nomic-embed-text<br/>qwen2.5-coder:3b]
-    A -->|clone e índice| R[(volume repos)]
-    C --- V1[(volume chroma-data)]
-    O --- V2[(volume ollama-data)]
-  end
-  A -. reranking .-> X[cross-encoder]
-```
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/img/arquitetura-rag-dark.svg">
+  <img alt="Arquitetura do agente RAG local: indexação no ChromaDB e consulta com reranking e LLM local" src="docs/img/arquitetura-rag-light.svg" width="100%">
+</picture>
+
+Os diagramas são editáveis: abra [`docs/img/arquitetura-rag.excalidraw`](docs/img/arquitetura-rag.excalidraw) em [excalidraw.com](https://excalidraw.com).
 
 Pergunta → busca no Chroma (`collection.query()`) → reranking com cross-encoder → trechos com arquivo e linha → LLM local → resposta citando as fontes.
 
