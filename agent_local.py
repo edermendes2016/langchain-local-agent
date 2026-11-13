@@ -30,6 +30,9 @@ def cmd_repos(_):
 
 def cmd_clone(args):
     cfg = get_repo(args.repo)
+    if not cfg.url:
+        print(f"{cfg.name} é um repositório local em {cfg.path}, nada para clonar.")
+        return
     if (cfg.path / ".git").exists():
         print(f"Já clonado em {cfg.path}")
         return

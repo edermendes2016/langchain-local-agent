@@ -28,3 +28,9 @@ repos:
     path: repos/aws-sandbox-quiz-da-nuvem
     scope: .
     include: ["**/*.py", "**/*.js", "**/*.html", "**/*.css", "**/*.sh", "**/*.yaml", "**/*.md"]
+
+  dojo-loja:
+    description: Dojo, loja com bugs injetados (gabarito fica em dojo/gabarito)
+    path: dojo/loja
+    scope: .
+    include: ["**/*.py"]

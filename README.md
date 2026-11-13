@@ -31,6 +31,21 @@ flowchart LR
 
 Pergunta → busca no Chroma (`collection.query()`) → reranking com cross-encoder → trechos com arquivo e linha → LLM local → resposta citando as fontes.
 
+## Para que serve
+
+- **Entender código desconhecido** perguntando em português, com arquivo, linha e trecho de cada resposta.
+- **Empresas que não podem mandar código para IA paga na nuvem**: tudo roda local, sem chaves, sem custo por token. Os limites do modelo pequeno e o caminho para escalar estão na wiki ([Uso em empresas](docs/wiki/Uso-em-empresas.md)).
+- **Treinar o olhar crítico sobre respostas de IA** com o [Dojo](docs/wiki/Dojo.md).
+
+## Dojo
+
+Em [`dojo/loja`](dojo/loja) há um repositório de treino com 3 bugs plantados e 9 testes (4 falham por causa dos bugs). Indexe, investigue com o agente, confira cada resposta no código e só depois abra o [gabarito](dojo/gabarito/loja.md). A wiki traz o ciclo de treino, cenários de falha reais (pergunta sem resposta no código, índice desatualizado, resposta com fonte certa e conclusão errada) e um prompt para gerar o seu próprio dojo.
+
+```bash
+docker compose exec agent python agent_local.py index -r dojo-loja
+docker compose exec agent python agent_local.py ask "A partir de qual valor o frete é grátis?" -r dojo-loja
+```
+
 ## Usar sem a interface
 
 ```bash

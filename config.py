@@ -73,7 +73,7 @@ def get_repo(name: str | None = None) -> RepoConfig:
     return RepoConfig(
         name=name,
         description=r.get("description", name),
-        url=r["url"],
+        url=r.get("url", ""),  # vazio = repositório local, sem clone
         path=path,
         scope=r.get("scope", "."),
         include=r.get("include", ["**/*.py"]),

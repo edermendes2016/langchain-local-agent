@@ -16,6 +16,8 @@ Dois repositórios já vêm configurados como exemplo: o núcleo do **LangChain*
 
 ## Decisões técnicas
 
+- [Para que serve e uso em empresas](Uso-em-empresas)
+- [Dojo: treinar o olhar crítico com IA](Dojo)
 - [Boas práticas de RAG aplicadas](Boas-praticas-RAG)
 - [Reranking](Reranking)
 - [Avaliação com perguntas de referência](Avaliacao)

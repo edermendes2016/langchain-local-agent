@@ -31,3 +31,9 @@ repos:
     scope: .
     include: ["**/*.py", "**/*.js", "**/*.html", "**/*.css", "**/*.sh", "**/*.yaml", "**/*.md"]
     collection: aws-quiz
+
+  dojo-loja:
+    description: Dojo, loja com bugs injetados (gabarito fica em dojo/gabarito)
+    path: /app/dojo/loja
+    scope: .
+    include: ["**/*.py"]

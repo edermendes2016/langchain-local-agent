@@ -16,6 +16,7 @@ RUN python -c "from sentence_transformers import CrossEncoder; CrossEncoder('cro
 
 COPY *.py ./
 COPY eval ./eval
+COPY dojo/loja ./dojo/loja
 COPY docker/repos.docker.yaml ./repos.docker.yaml
 COPY docker/entrypoint.sh /entrypoint.sh
 RUN sed -i 's/\r$//' /entrypoint.sh && chmod +x /entrypoint.sh
