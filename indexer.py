@@ -8,11 +8,10 @@ from collections import defaultdict
 from pathlib import Path
 
 import chromadb
-from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
 from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain_text_splitters import Language, RecursiveCharacterTextSplitter
 
-from config import CHROMA_PATH, RepoConfig
+from config import CHROMA_HOST, CHROMA_PATH, CHROMA_PORT, RepoConfig
 
 # Extensão -> linguagem do splitter. Sem entrada, usa os separadores genéricos.
 LANGUAGE_BY_EXT = {
@@ -27,22 +26,36 @@ HIGHLIGHT_BY_EXT = {".py": "python", ".js": "javascript", ".ts": "typescript", "
                     ".css": "css", ".sh": "bash", ".yaml": "yaml", ".yml": "yaml", ".md": "markdown"}
 
 
+def embedding_function(cfg: RepoConfig):
+    """Embeddings locais: sentence-transformers (padrão) ou um modelo servido pelo Ollama."""
+    if cfg.embedding_provider == "ollama":
+        from chromadb.utils.embedding_functions import OllamaEmbeddingFunction
+        return OllamaEmbeddingFunction(url=cfg.ollama_url, model_name=cfg.embedding_model, timeout=300)
+    from chromadb.utils.embedding_functions import SentenceTransformerEmbeddingFunction
+    return SentenceTransformerEmbeddingFunction(model_name=cfg.embedding_model)
+
+
+def get_client():
+    """Servidor Chroma (Docker) quando CHROMA_HOST está definido; senão, banco em disco."""
+    if CHROMA_HOST:
+        return chromadb.HttpClient(host=CHROMA_HOST, port=CHROMA_PORT)
+    return chromadb.PersistentClient(path=CHROMA_PATH)
+
+
 def get_collection(cfg: RepoConfig, reset: bool = False):
-    """Cliente persistente + coleção do repositório (padrão explícito do ChromaDB)."""
-    chroma_client = chromadb.PersistentClient(path=CHROMA_PATH)
+    """Cliente + coleção do repositório (padrão explícito do ChromaDB)."""
+    chroma_client = get_client()
     if reset:
         try:
             chroma_client.delete_collection(cfg.collection)
         except Exception:
             pass
-    embedding_fn = SentenceTransformerEmbeddingFunction(model_name=cfg.embedding_model)
     collection = chroma_client.get_or_create_collection(
         name=cfg.collection,
-        embedding_function=embedding_fn,
+        embedding_function=embedding_function(cfg),
         metadata={"hnsw:space": "cosine"},
     )
     return chroma_client, collection
-
 
 def _splitter(ext: str, cfg: RepoConfig) -> RecursiveCharacterTextSplitter:
     kwargs = dict(chunk_size=cfg.chunk_size, chunk_overlap=cfg.chunk_overlap, add_start_index=True)
@@ -68,7 +81,7 @@ def load_documents(cfg: RepoConfig):
     return docs
 
 
-def index_repository(cfg: RepoConfig, reset: bool = False, batch_size: int = 256, log=print) -> int:
+def index_repository(cfg: RepoConfig, reset: bool = False, batch_size: int = 64, log=print) -> int:
     if not cfg.target.exists():
         raise SystemExit(f"Pasta não encontrada: {cfg.target}\n"
                          f"Rode antes: python agent_local.py clone -r {cfg.name}")

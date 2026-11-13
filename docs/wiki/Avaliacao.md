@@ -61,6 +61,35 @@ Com `prism-ml/bonsai-27b`, k = 6 e reranking ligado, a conferência automática 
 - A conferência de respostas é textual (contém o caminho ou o nome do arquivo e as palavras-chave). Ela pode dar falso negativo quando o modelo escreve o termo de outra forma, e não avalia a qualidade da redação.
 - O conjunto foi escrito depois do primeiro contato com os repositórios. Para uma comparação justa entre configurações, mantenha as perguntas fixas e mude uma coisa de cada vez (tamanho do bloco, `fetch_k`, modelo de embeddings ou de reranking).
 
+## 3. No Docker, com modelos pequenos
+
+A mesma avaliação rodou dentro da stack [Docker](Docker), com `nomic-embed-text` nos embeddings e `qwen2.5-coder:3b` nas respostas (`python evaluate.py -r langchain --answers --tag=-docker`).
+
+**langchain**
+
+| Métrica | Só vetorial | Cross-encoder | BM25 |
+|---|---|---|---|
+| hit@1 | 0,44 | 0,39 | 0,50 |
+| hit@5 | 0,67 | 0,78 | 0,67 |
+| MRR | 0,56 | 0,55 | 0,60 |
+
+**aws-quiz**
+
+| Métrica | Só vetorial | Cross-encoder | BM25 |
+|---|---|---|---|
+| hit@1 | 0,42 | 0,33 | 0,33 |
+| hit@5 | 0,67 | 0,75 | 0,50 |
+| MRR | 0,49 | 0,48 | 0,44 |
+
+Leituras honestas dos números:
+
+- Os embeddings `nomic-embed-text` já recuperam melhor que o `all-MiniLM-L6-v2` (no aws-quiz o hit@1 vai de 0,08 para 0,42), então sobra menos espaço para o reranking ganhar.
+- O cross-encoder é o único que melhora o top 5 nos dois repositórios, que é o que importa quando se envia 6 blocos ao modelo. Por isso continua como padrão. Ele pode piorar a posição 1, como em `lc15` e `lc18`.
+- O BM25 ajuda no MRR do langchain, onde as perguntas citam nomes de símbolos, mas piora no aws-quiz.
+- As respostas do `qwen2.5-coder:3b` citaram o arquivo esperado em 11 de 18 (langchain) e 7 de 12 (aws-quiz), com tempo médio de 18 s e 43 s. A checagem de palavras-chave foi baixa (3 de 18 e 3 de 12), porque o modelo pequeno parafraseia mais do que o LM Studio com o 27B. Modelo menor significa resposta mais rápida e menos precisa; troque `LLM_MODEL` se houver RAM.
+
+Os relatórios completos estão em `eval/results/*-docker.md` e `*-docker-bm25.md`.
+
 ## Próximas melhorias sugeridas
 
 Busca híbrida (BM25 mais vetorial) para casar nomes exatos de símbolos, embeddings específicos para código e blocos por função em vez de por tamanho.

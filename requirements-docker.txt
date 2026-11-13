@@ -1,0 +1,10 @@
+chromadb-client
+ollama
+langchain-community
+langchain-openai
+langchain-text-splitters
+sentence-transformers
+rank_bm25
+streamlit
+pyyaml
+requests

@@ -11,6 +11,8 @@ import yaml
 BASE_DIR = Path(__file__).resolve().parent
 CONFIG_FILE = Path(os.getenv("REPOS_CONFIG", BASE_DIR / "repos.yaml"))
 CHROMA_PATH = os.getenv("CHROMA_PATH", str(BASE_DIR / "chroma_db"))
+CHROMA_HOST = os.getenv("CHROMA_HOST")  # se definido, usa o servidor Chroma em vez do disco local
+CHROMA_PORT = int(os.getenv("CHROMA_PORT", "8000"))
 
 
 @dataclass(frozen=True)
@@ -25,7 +27,10 @@ class RepoConfig:
     collection: str
     chunk_size: int
     chunk_overlap: int
+    embedding_provider: str  # "sentence-transformers" (local) ou "ollama"
     embedding_model: str
+    ollama_url: str
+    reranker: str  # "cross-encoder", "bm25" ou "none"
     reranker_model: str
     llm_base_url: str
     llm_model: str
@@ -76,7 +81,10 @@ def get_repo(name: str | None = None) -> RepoConfig:
         collection=r.get("collection", name.replace("_", "-")),
         chunk_size=int(pick("chunk_size", 1500)),
         chunk_overlap=int(pick("chunk_overlap", 200)),
+        embedding_provider=os.getenv("EMBEDDING_PROVIDER", pick("embedding_provider", "sentence-transformers")),
         embedding_model=os.getenv("EMBEDDING_MODEL", pick("embedding_model", "all-MiniLM-L6-v2")),
+        ollama_url=os.getenv("OLLAMA_URL", pick("ollama_url", "http://localhost:11434")),
+        reranker=os.getenv("RERANKER", pick("reranker", "cross-encoder")),
         reranker_model=os.getenv("RERANKER_MODEL", pick("reranker_model", "cross-encoder/ms-marco-MiniLM-L-6-v2")),
         llm_base_url=os.getenv("LLM_BASE_URL", pick("llm_base_url", "http://localhost:1234/v1")),
         llm_model=os.getenv("LLM_MODEL", pick("llm_model", "prism-ml/bonsai-27b")),

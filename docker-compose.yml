@@ -1,0 +1,70 @@
+name: rag-local-agent
+
+# Tudo local: Ollama (LLM + embeddings), Chroma (vetores) e o agente com interface web.
+# Sem chaves de API. Modelos configuráveis em .env (veja .env.example).
+
+services:
+  ollama:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.ollama
+    environment:
+      LLM_MODEL: ${LLM_MODEL:-qwen2.5-coder:3b}
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-nomic-embed-text}
+      OLLAMA_CONTEXT_LENGTH: ${OLLAMA_CONTEXT_LENGTH:-8192}
+      OLLAMA_KEEP_ALIVE: 30m
+    volumes:
+      - ollama-data:/root/.ollama
+    healthcheck:
+      # saudável só depois que os dois modelos foram baixados
+      test: ["CMD-SHELL", "ollama list | grep -q \"$${LLM_MODEL%%:*}\" && ollama list | grep -q \"$${EMBEDDING_MODEL%%:*}\""]
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 20m
+    restart: unless-stopped
+
+  chroma:
+    image: chromadb/chroma:${CHROMA_VERSION:-1.5.9}
+    environment:
+      IS_PERSISTENT: "TRUE"
+      PERSIST_DIRECTORY: /data
+      ANONYMIZED_TELEMETRY: "FALSE"
+    volumes:
+      - chroma-data:/data
+    healthcheck:
+      test: ["CMD", "/bin/bash", "-c", "cat < /dev/null > /dev/tcp/localhost/8000"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    restart: unless-stopped
+
+  agent:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.agent
+    depends_on:
+      ollama:
+        condition: service_healthy
+      chroma:
+        condition: service_healthy
+    environment:
+      CHROMA_HOST: chroma
+      CHROMA_PORT: "8000"
+      OLLAMA_URL: http://ollama:11434
+      LLM_BASE_URL: http://ollama:11434/v1
+      LLM_MODEL: ${LLM_MODEL:-qwen2.5-coder:3b}
+      EMBEDDING_PROVIDER: ollama
+      EMBEDDING_MODEL: ${EMBEDDING_MODEL:-nomic-embed-text}
+      RERANKER: ${RERANKER:-cross-encoder}   # cross-encoder, bm25 ou none
+      BOOTSTRAP_REPOS: ${BOOTSTRAP_REPOS:-langchain}
+    volumes:
+      - repos-data:/data/repos
+    ports:
+      - "${APP_PORT:-8501}:8501"
+    restart: unless-stopped
+
+volumes:
+  ollama-data:
+  chroma-data:
+  repos-data:

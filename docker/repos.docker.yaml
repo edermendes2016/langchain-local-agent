@@ -1,0 +1,33 @@
+# Configuração usada dentro do Docker. Os clones ficam no volume repos-data (/data/repos).
+# Modelos, Chroma e Ollama são configurados por variáveis de ambiente no docker-compose.yml.
+
+defaults:
+  chunk_size: 1500
+  chunk_overlap: 200
+  embedding_provider: ollama
+  embedding_model: nomic-embed-text
+  ollama_url: http://ollama:11434
+  reranker: cross-encoder
+  reranker_model: cross-encoder/ms-marco-MiniLM-L-6-v2
+  llm_base_url: http://ollama:11434/v1
+  llm_model: qwen2.5-coder:3b
+  exclude: ["**/node_modules/**", "**/.git/**", "**/__pycache__/**", "**/*.min.js"]
+
+default_repo: langchain
+
+repos:
+  langchain:
+    description: Núcleo do LangChain (libs/core)
+    url: https://github.com/langchain-ai/langchain.git
+    path: /data/repos/langchain
+    scope: libs/core/langchain_core
+    include: ["**/*.py"]
+    collection: langchain-core
+
+  aws-quiz:
+    description: Quiz da nuvem na AWS (Lambda, front-end e infraestrutura)
+    url: https://github.com/edermendes2016/aws-sandbox-quiz-da-nuvem.git
+    path: /data/repos/aws-quiz
+    scope: .
+    include: ["**/*.py", "**/*.js", "**/*.html", "**/*.css", "**/*.sh", "**/*.yaml", "**/*.md"]
+    collection: aws-quiz

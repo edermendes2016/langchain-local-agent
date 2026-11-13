@@ -1,0 +1,11 @@
+.venv/
+.git/
+chroma_db/
+langchain_repo/
+repos/
+__pycache__/
+*.pyc
+.env
+docs/
+eval/results/
+validacao_*.txt

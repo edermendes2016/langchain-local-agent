@@ -1,0 +1,6 @@
+FROM ollama/ollama:latest
+
+COPY docker/ollama-entrypoint.sh /ollama-entrypoint.sh
+RUN sed -i 's/\r$//' /ollama-entrypoint.sh && chmod +x /ollama-entrypoint.sh
+
+ENTRYPOINT ["/bin/bash", "/ollama-entrypoint.sh"]

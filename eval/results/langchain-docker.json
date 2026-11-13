@@ -1,0 +1,857 @@
+{
+  "repo": "langchain",
+  "date": "2026-11-13",
+  "fetch_k": 40,
+  "metrics": {
+    "vector": {
+      "hit@1": 0.4444444444444444,
+      "recall@1": 0.4444444444444444,
+      "hit@3": 0.6111111111111112,
+      "recall@3": 0.6111111111111112,
+      "hit@5": 0.6666666666666666,
+      "recall@5": 0.6666666666666666,
+      "MRR": 0.5560846560846561
+    },
+    "rerank": {
+      "hit@1": 0.3888888888888889,
+      "recall@1": 0.3888888888888889,
+      "hit@3": 0.6666666666666666,
+      "recall@3": 0.6666666666666666,
+      "hit@5": 0.7777777777777778,
+      "recall@5": 0.7777777777777778,
+      "MRR": 0.5486772486772487
+    }
+  },
+  "questions": [
+    {
+      "id": "lc01",
+      "question": "Onde fica definida a classe base abstrata dos modelos de chat?",
+      "expected": [
+        "libs/core/langchain_core/language_models/chat_models.py"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/messages/base.py",
+          "libs/core/langchain_core/messages/chat.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/language_models/chat_model_stream.py"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/tracers/base.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/messages/base.py",
+          "libs/core/langchain_core/language_models/chat_models.py"
+        ]
+      }
+    },
+    {
+      "id": "lc02",
+      "question": "Que classe implementa o encadeamento de runnables com o operador pipe, executando um depois do outro?",
+      "expected": [
+        "libs/core/langchain_core/runnables/base.py"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/config.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/branch.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/branch.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/base.py"
+        ]
+      }
+    },
+    {
+      "id": "lc03",
+      "question": "Onde está a classe que executa vários runnables em paralelo sobre a mesma entrada?",
+      "expected": [
+        "libs/core/langchain_core/runnables/base.py"
+      ],
+      "vector": {
+        "rank": 5,
+        "files": [
+          "libs/core/langchain_core/runnables/fallbacks.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/config.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/load/load.py",
+          "libs/core/langchain_core/runnables/base.py"
+        ]
+      },
+      "rerank": {
+        "rank": 3,
+        "files": [
+          "libs/core/langchain_core/runnables/fallbacks.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/fallbacks.py",
+          "libs/core/langchain_core/runnables/base.py"
+        ]
+      }
+    },
+    {
+      "id": "lc04",
+      "question": "Qual classe representa a mensagem de resposta da IA, com chamadas de ferramenta e metadados de uso?",
+      "expected": [
+        "libs/core/langchain_core/messages/ai.py"
+      ],
+      "vector": {
+        "rank": null,
+        "files": [
+          "libs/core/langchain_core/messages/chat.py",
+          "libs/core/langchain_core/messages/base.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/language_models/fake.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/prompts/dict.py",
+          "libs/core/langchain_core/messages/base.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/language_models/fake.py"
+        ]
+      },
+      "rerank": {
+        "rank": null,
+        "files": [
+          "libs/core/langchain_core/prompts/message.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/messages/utils.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/messages/base.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/messages/human.py"
+        ]
+      }
+    },
+    {
+      "id": "lc05",
+      "question": "Onde é definido o template de prompt para conversas com lista de mensagens de sistema e de usuário?",
+      "expected": [
+        "libs/core/langchain_core/prompts/chat.py"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/prompts/prompt.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/prompts/structured.py",
+          "libs/core/langchain_core/prompts/prompt.py"
+        ]
+      },
+      "rerank": {
+        "rank": 2,
+        "files": [
+          "libs/core/langchain_core/prompts/loading.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/prompts/message.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/prompts/prompt.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/prompts/prompt.py"
+        ]
+      }
+    },
+    {
+      "id": "lc06",
+      "question": "Que parser converte a saída do modelo em texto simples?",
+      "expected": [
+        "libs/core/langchain_core/output_parsers/string.py"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/output_parsers/string.py",
+          "libs/core/langchain_core/output_parsers/pydantic.py",
+          "libs/core/langchain_core/messages/block_translators/langchain_v0.py",
+          "libs/core/langchain_core/language_models/_utils.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/output_parsers/base.py",
+          "libs/core/langchain_core/output_parsers/openai_tools.py",
+          "libs/core/langchain_core/output_parsers/base.py",
+          "libs/core/langchain_core/output_parsers/xml.py"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/output_parsers/string.py",
+          "libs/core/langchain_core/output_parsers/base.py",
+          "libs/core/langchain_core/output_parsers/base.py",
+          "libs/core/langchain_core/output_parsers/base.py",
+          "libs/core/langchain_core/output_parsers/list.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/output_parsers/pydantic.py",
+          "libs/core/langchain_core/output_parsers/pydantic.py",
+          "libs/core/langchain_core/output_parsers/base.py",
+          "libs/core/langchain_core/language_models/chat_models.py"
+        ]
+      }
+    },
+    {
+      "id": "lc07",
+      "question": "Onde está o decorador que transforma uma função Python em uma ferramenta para agentes?",
+      "expected": [
+        "libs/core/langchain_core/tools/convert.py"
+      ],
+      "vector": {
+        "rank": null,
+        "files": [
+          "libs/core/langchain_core/utils/pydantic.py",
+          "libs/core/langchain_core/callbacks/stdout.py",
+          "libs/core/langchain_core/_api/beta_decorator.py",
+          "libs/core/langchain_core/callbacks/stdout.py",
+          "libs/core/langchain_core/agents.py",
+          "libs/core/langchain_core/agents.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/tracers/stdout.py",
+          "libs/core/langchain_core/_api/deprecation.py",
+          "libs/core/langchain_core/agents.py"
+        ]
+      },
+      "rerank": {
+        "rank": 5,
+        "files": [
+          "libs/core/langchain_core/_api/deprecation.py",
+          "libs/core/langchain_core/_api/beta_decorator.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/utils/pydantic.py",
+          "libs/core/langchain_core/tools/convert.py",
+          "libs/core/langchain_core/_api/beta_decorator.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/agents.py",
+          "libs/core/langchain_core/_api/beta_decorator.py",
+          "libs/core/langchain_core/utils/pydantic.py"
+        ]
+      }
+    },
+    {
+      "id": "lc08",
+      "question": "Qual é a interface abstrata dos recuperadores de documentos e qual método eles implementam?",
+      "expected": [
+        "libs/core/langchain_core/retrievers.py"
+      ],
+      "vector": {
+        "rank": null,
+        "files": [
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/indexing/api.py",
+          "libs/core/langchain_core/indexing/api.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/_api/deprecation.py",
+          "libs/core/langchain_core/indexing/api.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/document_loaders/base.py",
+          "libs/core/langchain_core/vectorstores/base.py"
+        ]
+      },
+      "rerank": {
+        "rank": null,
+        "files": [
+          "libs/core/langchain_core/document_loaders/base.py",
+          "libs/core/langchain_core/indexing/base.py",
+          "libs/core/langchain_core/document_loaders/blob_loaders.py",
+          "libs/core/langchain_core/document_loaders/base.py",
+          "libs/core/langchain_core/document_loaders/base.py",
+          "libs/core/langchain_core/indexing/api.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/embeddings/embeddings.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/language_models/_compat_bridge.py"
+        ]
+      }
+    },
+    {
+      "id": "lc09",
+      "question": "Onde fica a classe Document que guarda o conteúdo da página e os metadados?",
+      "expected": [
+        "libs/core/langchain_core/documents/base.py"
+      ],
+      "vector": {
+        "rank": 6,
+        "files": [
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/embeddings/fake.py",
+          "libs/core/langchain_core/documents/base.py",
+          "libs/core/langchain_core/indexing/base.py",
+          "libs/core/langchain_core/documents/base.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/documents/compressor.py"
+        ]
+      },
+      "rerank": {
+        "rank": 2,
+        "files": [
+          "libs/core/langchain_core/documents/compressor.py",
+          "libs/core/langchain_core/documents/base.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/documents/base.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/documents/compressor.py",
+          "libs/core/langchain_core/runnables/graph.py",
+          "libs/core/langchain_core/indexing/base.py"
+        ]
+      }
+    },
+    {
+      "id": "lc10",
+      "question": "Onde está o gerenciador de callbacks que dispara eventos de início e fim de execução?",
+      "expected": [
+        "libs/core/langchain_core/callbacks/manager.py"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/__init__.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/__init__.py",
+          "libs/core/langchain_core/callbacks/manager.py"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/base.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py",
+          "libs/core/langchain_core/callbacks/manager.py"
+        ]
+      }
+    },
+    {
+      "id": "lc11",
+      "question": "Existe um vector store em memória? Onde ele é implementado?",
+      "expected": [
+        "libs/core/langchain_core/vectorstores/in_memory.py"
+      ],
+      "vector": {
+        "rank": 2,
+        "files": [
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/in_memory.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/in_memory.py",
+          "libs/core/langchain_core/indexing/api.py",
+          "libs/core/langchain_core/vectorstores/in_memory.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/utils.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/indexing/api.py"
+        ]
+      },
+      "rerank": {
+        "rank": 2,
+        "files": [
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/in_memory.py",
+          "libs/core/langchain_core/vectorstores/in_memory.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/in_memory.py",
+          "libs/core/langchain_core/example_selectors/semantic_similarity.py",
+          "libs/core/langchain_core/example_selectors/semantic_similarity.py",
+          "libs/core/langchain_core/indexing/api.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/vectorstores/in_memory.py"
+        ]
+      }
+    },
+    {
+      "id": "lc12",
+      "question": "Qual interface define como textos são convertidos em embeddings?",
+      "expected": [
+        "libs/core/langchain_core/embeddings/embeddings.py"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/embeddings/embeddings.py",
+          "libs/core/langchain_core/embeddings/fake.py",
+          "libs/core/langchain_core/messages/system.py",
+          "libs/core/langchain_core/embeddings/embeddings.py",
+          "libs/core/langchain_core/prompts/chat.py",
+          "libs/core/langchain_core/messages/human.py",
+          "libs/core/langchain_core/language_models/_utils.py",
+          "libs/core/langchain_core/messages/chat.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/messages/block_translators/langchain_v0.py"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/embeddings/embeddings.py",
+          "libs/core/langchain_core/embeddings/embeddings.py",
+          "libs/core/langchain_core/embeddings/embeddings.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/example_selectors/semantic_similarity.py",
+          "libs/core/langchain_core/example_selectors/semantic_similarity.py",
+          "libs/core/langchain_core/vectorstores/base.py",
+          "libs/core/langchain_core/embeddings/fake.py",
+          "libs/core/langchain_core/embeddings/__init__.py",
+          "libs/core/langchain_core/vectorstores/base.py"
+        ]
+      }
+    },
+    {
+      "id": "lc13",
+      "question": "Como é implementado o cache em memória das respostas dos modelos?",
+      "expected": [
+        "libs/core/langchain_core/caches.py"
+      ],
+      "vector": {
+        "rank": 7,
+        "files": [
+          "libs/core/langchain_core/utils/pydantic.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/load/load.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/tools/base.py",
+          "libs/core/langchain_core/caches.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/caches.py"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/caches.py",
+          "libs/core/langchain_core/caches.py",
+          "libs/core/langchain_core/tools/base.py",
+          "libs/core/langchain_core/tools/structured.py",
+          "libs/core/langchain_core/caches.py",
+          "libs/core/langchain_core/caches.py",
+          "libs/core/langchain_core/language_models/llms.py",
+          "libs/core/langchain_core/caches.py",
+          "libs/core/langchain_core/language_models/base.py",
+          "libs/core/langchain_core/tools/base.py"
+        ]
+      }
+    },
+    {
+      "id": "lc14",
+      "question": "Onde está o limitador de taxa de requisições em memória para chamadas de modelo?",
+      "expected": [
+        "libs/core/langchain_core/rate_limiters.py"
+      ],
+      "vector": {
+        "rank": 2,
+        "files": [
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/rate_limiters.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/rate_limiters.py",
+          "libs/core/langchain_core/language_models/model_profile.py",
+          "libs/core/langchain_core/load/serializable.py",
+          "libs/core/langchain_core/rate_limiters.py",
+          "libs/core/langchain_core/output_parsers/openai_tools.py",
+          "libs/core/langchain_core/utils/pydantic.py",
+          "libs/core/langchain_core/vectorstores/in_memory.py"
+        ]
+      },
+      "rerank": {
+        "rank": 2,
+        "files": [
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/rate_limiters.py",
+          "libs/core/langchain_core/tools/base.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/language_models/_compat_bridge.py",
+          "libs/core/langchain_core/language_models/llms.py",
+          "libs/core/langchain_core/rate_limiters.py",
+          "libs/core/langchain_core/rate_limiters.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/messages/utils.py"
+        ]
+      }
+    },
+    {
+      "id": "lc15",
+      "question": "Qual função garante uma configuração RunnableConfig válida, preenchendo valores padrão?",
+      "expected": [
+        "libs/core/langchain_core/runnables/config.py"
+      ],
+      "vector": {
+        "rank": 2,
+        "files": [
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/config.py",
+          "libs/core/langchain_core/runnables/config.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/history.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/config.py",
+          "libs/core/langchain_core/runnables/base.py"
+        ]
+      },
+      "rerank": {
+        "rank": 7,
+        "files": [
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/base.py",
+          "libs/core/langchain_core/runnables/config.py",
+          "libs/core/langchain_core/load/mapping.py",
+          "libs/core/langchain_core/runnables/configurable.py",
+          "libs/core/langchain_core/runnables/configurable.py"
+        ]
+      }
+    },
+    {
+      "id": "lc16",
+      "question": "Onde está o template de prompt com exemplos few-shot?",
+      "expected": [
+        "libs/core/langchain_core/prompts/few_shot.py"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/few_shot_with_templates.py",
+          "libs/core/langchain_core/prompts/few_shot_with_templates.py",
+          "libs/core/langchain_core/prompts/few_shot_with_templates.py",
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/few_shot.py"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/few_shot_with_templates.py",
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/few_shot_with_templates.py",
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/few_shot.py",
+          "libs/core/langchain_core/prompts/loading.py",
+          "libs/core/langchain_core/prompts/few_shot_with_templates.py"
+        ]
+      }
+    },
+    {
+      "id": "lc17",
+      "question": "Qual classe interpreta a saída do modelo como JSON?",
+      "expected": [
+        "libs/core/langchain_core/output_parsers/json.py"
+      ],
+      "vector": {
+        "rank": null,
+        "files": [
+          "libs/core/langchain_core/utils/pydantic.py",
+          "libs/core/langchain_core/language_models/fake.py",
+          "libs/core/langchain_core/output_parsers/openai_functions.py",
+          "libs/core/langchain_core/tools/structured.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/language_models/fake_chat_models.py",
+          "libs/core/langchain_core/output_parsers/openai_functions.py",
+          "libs/core/langchain_core/messages/ai.py",
+          "libs/core/langchain_core/prompt_values.py",
+          "libs/core/langchain_core/load/serializable.py"
+        ]
+      },
+      "rerank": {
+        "rank": null,
+        "files": [
+          "libs/core/langchain_core/utils/pydantic.py",
+          "libs/core/langchain_core/tools/structured.py",
+          "libs/core/langchain_core/tools/base.py",
+          "libs/core/langchain_core/load/load.py",
+          "libs/core/langchain_core/utils/function_calling.py",
+          "libs/core/langchain_core/utils/pydantic.py",
+          "libs/core/langchain_core/output_parsers/openai_functions.py",
+          "libs/core/langchain_core/utils/function_calling.py",
+          "libs/core/langchain_core/output_parsers/openai_functions.py",
+          "libs/core/langchain_core/load/dump.py"
+        ]
+      }
+    },
+    {
+      "id": "lc18",
+      "question": "Onde está a função que corta uma lista de mensagens para caber em um limite de tokens?",
+      "expected": [
+        "libs/core/langchain_core/messages/utils.py"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "libs/core/langchain_core/messages/utils.py",
+          "libs/core/langchain_core/messages/utils.py",
+          "libs/core/langchain_core/messages/utils.py",
+          "libs/core/langchain_core/messages/utils.py",
+          "libs/core/langchain_core/messages/utils.py",
+          "libs/core/langchain_core/messages/utils.py",
+          "libs/core/langchain_core/messages/utils.py",
+          "libs/core/langchain_core/language_models/base.py",
+          "libs/core/langchain_core/messages/utils.py",
+          "libs/core/langchain_core/messages/utils.py"
+        ]
+      },
+      "rerank": {
+        "rank": 5,
+        "files": [
+          "libs/core/langchain_core/rate_limiters.py",
+          "libs/core/langchain_core/rate_limiters.py",
+          "libs/core/langchain_core/rate_limiters.py",
+          "libs/core/langchain_core/language_models/chat_models.py",
+          "libs/core/langchain_core/messages/utils.py",
+          "libs/core/langchain_core/rate_limiters.py",
+          "libs/core/langchain_core/rate_limiters.py",
+          "libs/core/langchain_core/messages/utils.py",
+          "libs/core/langchain_core/language_models/llms.py",
+          "libs/core/langchain_core/messages/utils.py"
+        ]
+      }
+    }
+  ],
+  "answers": [
+    {
+      "id": "lc01",
+      "seconds": 13.2,
+      "answer": "A classe base abstrata dos modelos de chat está definida na fonte [1] libs/core/langchain_core/language_models/chat_models.py:325.",
+      "cites_expected_file": true,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc02",
+      "seconds": 19.2,
+      "answer": "A classe que implementa o encadeamento de runnables com o operador pipe, executando um depois do outro, é a `RunnableSequence`.",
+      "cites_expected_file": false,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc03",
+      "seconds": 21.1,
+      "answer": "A classe que executa vários runnables em paralelo sobre a mesma entrada é a `RunnableEach`. Ela é definida na fonte [4] libs/core/langchain_core/runnables/base.py:5564.",
+      "cites_expected_file": true,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc04",
+      "seconds": 17.5,
+      "answer": "A classe que representa a mensagem de resposta da IA, com chamadas de ferramenta e metadados de uso é a `FunctionMessage`. Esta classe é definida na fonte [6] libs/core/langchain_core/messages/base.py:92.",
+      "cites_expected_file": false,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc05",
+      "seconds": 17.7,
+      "answer": "O template de prompt para conversas com lista de mensagens de sistema e de usuário é definido na função `from_template` da classe `ChatMessagePromptTemplate` na fonte [3] libs/core/langchain_core/prompts/chat.py:398.",
+      "cites_expected_file": true,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc06",
+      "seconds": 16.9,
+      "answer": "O parser que converte a saída do modelo em texto simples é o `StrOutputParser`.",
+      "cites_expected_file": false,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc07",
+      "seconds": 15.8,
+      "answer": "O decorador que transforma uma função Python em uma ferramenta para agentes está na Fonte [3] libs/core/langchain_core/runnables/base.py:1518.",
+      "cites_expected_file": false,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc08",
+      "seconds": 15.9,
+      "answer": "A interface abstrata dos recuperadores de documentos é `BaseRetriever` e o método que eles implementam é `upsert`.",
+      "cites_expected_file": false,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc09",
+      "seconds": 18.2,
+      "answer": "A classe Document está definida na fonte [2] libs/core/langchain_core/documents/base.py:288.",
+      "cites_expected_file": true,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": true
+    },
+    {
+      "id": "lc10",
+      "seconds": 16.4,
+      "answer": "O gerenciador de callbacks que dispara eventos de início e fim de execução está localizado na função `handle_event` na linha [4] do arquivo [4] libs/core/langchain_core/callbacks/manager.py.",
+      "cites_expected_file": true,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc11",
+      "seconds": 19.0,
+      "answer": "Sim, existe um vector store em memória. Ele é implementado na classe `InMemoryVectorStore` na fonte [2] libs/core/langchain_core/vectorstores/in_memory.py:34.",
+      "cites_expected_file": true,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": true
+    },
+    {
+      "id": "lc12",
+      "seconds": 15.9,
+      "answer": "A interface que define como textos são convertidos em embeddings é a `Embeddings` definida no arquivo [1] libs/core/langchain_core/embeddings/embeddings.py:8.",
+      "cites_expected_file": true,
+      "keywords_found": 1,
+      "keywords_total": 1,
+      "ok": true
+    },
+    {
+      "id": "lc13",
+      "seconds": 23.3,
+      "answer": "O cache em memória das respostas dos modelos é implementado através da interface `BaseCache` definida na fonte [2] libs/core/langchain_core/caches.py:32. Esta interface define os métodos `lookup`, `update` e `clear` que são usados para buscar, atualizar e limpar o cache, respectivamente. A implementação padrão desses métodos é de chamar os métodos sincronos de forma assíncrona usando `run_in_executor(None, self.lookup, prompt, llm_string)`.",
+      "cites_expected_file": true,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc14",
+      "seconds": 14.1,
+      "answer": "O limitador de taxa de requisições em memória para chamadas de modelo está definido na função `acquire` da classe `BaseRateLimiter` no arquivo [2] libs/core/langchain_core/rate_limiters.py:11.",
+      "cites_expected_file": true,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc15",
+      "seconds": 18.1,
+      "answer": "A função que garante uma configuração RunnableConfig válida, preenchendo valores padrão, é a função `_prepare` definida na Fonte [5] libs/core/langchain_core/runnables/configurable.py:419.",
+      "cites_expected_file": false,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc16",
+      "seconds": 17.6,
+      "answer": "O template de prompt com exemplos few-shot está definido na classe `FewShotChatMessagePromptTemplate` na fonte [1] libs/core/langchain_core/prompts/few_shot.py:261.",
+      "cites_expected_file": true,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc17",
+      "seconds": 18.1,
+      "answer": "A classe que interpreta a saída do modelo como JSON é a `model_json_schema` definida no arquivo [1] libs/core/langchain_core/utils/pydantic.py:351.",
+      "cites_expected_file": false,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    },
+    {
+      "id": "lc18",
+      "seconds": 17.5,
+      "answer": "A função que corta uma lista de mensagens para caber em um limite de tokens está localizada na função `_first_max_tokens` no arquivo [5] libs/core/langchain_core/messages/utils.py:1988.",
+      "cites_expected_file": true,
+      "keywords_found": 0,
+      "keywords_total": 1,
+      "ok": false
+    }
+  ]
+}

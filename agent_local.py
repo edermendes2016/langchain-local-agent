@@ -42,6 +42,47 @@ def cmd_index(args):
     index_repository(get_repo(args.repo), reset=args.reset)
 
 
+def _wait(label, check, timeout=1800, every=3):
+    import time
+    t0 = time.time()
+    while time.time() - t0 < timeout:
+        try:
+            if check():
+                print(f"[ok] {label}", flush=True)
+                return
+        except Exception:
+            pass
+        time.sleep(every)
+    sys.exit(f"Tempo esgotado esperando: {label}")
+
+
+def cmd_bootstrap(_):
+    """Usado pelo Docker: espera os serviços, clona e indexa o que ainda não estiver no Chroma."""
+    import os
+
+    import requests
+
+    from config import CHROMA_HOST, CHROMA_PORT
+    from indexer import index_repository
+
+    cfg0 = get_repo(None)
+    if CHROMA_HOST:
+        _wait("Chroma", lambda: requests.get(f"http://{CHROMA_HOST}:{CHROMA_PORT}/api/v2/heartbeat", timeout=3).ok)
+    if cfg0.embedding_provider == "ollama":
+        models = [cfg0.embedding_model, cfg0.llm_model]
+        def has_models():
+            tags = requests.get(cfg0.ollama_url.rstrip("/") + "/api/tags", timeout=5).json()["models"]
+            names = {m["name"] for m in tags} | {m["name"].split(":")[0] for m in tags}
+            return all(m in names or m.split(":")[0] + ":latest" in names for m in models)
+        _wait("modelos do Ollama (" + ", ".join(models) + ")", has_models)
+
+    for name in os.getenv("BOOTSTRAP_REPOS", cfg0.name).split(","):
+        cfg = get_repo(name.strip())
+        cmd_clone(argparse.Namespace(repo=cfg.name))
+        # só indexa se a coleção estiver vazia (index_repository avisa e sai quando já há blocos)
+        index_repository(cfg, reset=False)
+
+
 def cmd_ask(args):
     from llm import answer, server_online
     from retriever import Retriever
@@ -82,6 +123,7 @@ def main():
     p_index = sub.add_parser("index", help="Indexa os arquivos no ChromaDB")
     add_repo(p_index)
     p_index.add_argument("--reset", action="store_true", help="Apaga e recria a coleção")
+    sub.add_parser("bootstrap", help="Espera serviços, clona e indexa automaticamente (Docker)")
     p_ask = sub.add_parser("ask", help="Faz uma pergunta sobre o código")
     add_repo(p_ask)
     p_ask.add_argument("question")
@@ -91,7 +133,8 @@ def main():
     p_ask.add_argument("--sources-only", action="store_true", help="Mostra só as fontes, sem chamar o LLM")
 
     args = parser.parse_args()
-    {"repos": cmd_repos, "clone": cmd_clone, "index": cmd_index, "ask": cmd_ask}[args.cmd](args)
+    {"repos": cmd_repos, "clone": cmd_clone, "index": cmd_index, "ask": cmd_ask,
+     "bootstrap": cmd_bootstrap}[args.cmd](args)
 
 
 if __name__ == "__main__":

@@ -65,6 +65,7 @@ def main():
     ap.add_argument("--fetch-k", type=int, default=40, help="Candidatos buscados antes do reranking")
     ap.add_argument("--answers", action="store_true", help="Gera respostas com o LLM local e confere")
     ap.add_argument("-k", type=int, default=6, help="Blocos enviados ao LLM ao avaliar respostas")
+    ap.add_argument("--tag", default="", help="Sufixo do arquivo de resultado (ex.: bm25)")
     args = ap.parse_args()
 
     cfg = get_repo(args.repo)
@@ -89,7 +90,7 @@ def main():
 
     lines = [f"# Avaliação de recuperação: {cfg.name}", "",
              f"{len(rows)} perguntas de referência, coleção `{cfg.collection}` ({retriever.count()} blocos), "
-             f"reranker `{cfg.reranker_model}`, {args.fetch_k} candidatos antes do reranking.", "",
+             f"reranker `{cfg.reranker}` (`{cfg.reranker_model}`), {args.fetch_k} candidatos antes do reranking.", "",
              "| Métrica | Busca vetorial | Vetorial + reranking |", "|---|---|---|"]
     for key in m_vec:
         lines.append(f"| {key} | {m_vec[key]:.2f} | {m_rer[key]:.2f} |")
@@ -126,8 +127,8 @@ def main():
 
     out_dir = BASE_DIR / "eval" / "results"
     out_dir.mkdir(parents=True, exist_ok=True)
-    (out_dir / f"{cfg.name}.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    (out_dir / f"{cfg.name}.json").write_text(json.dumps({
+    (out_dir / f"{cfg.name}{args.tag}.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    (out_dir / f"{cfg.name}{args.tag}.json").write_text(json.dumps({
         "repo": cfg.name, "date": time.strftime("%Y-%m-%d"), "fetch_k": args.fetch_k,
         "metrics": {"vector": m_vec, "rerank": m_rer},
         "questions": [{k: v for k, v in r.items() if k not in ("item", "rerank_hits")} for r in rows],

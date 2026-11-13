@@ -1,0 +1,4 @@
+* text=auto
+# scripts executados dentro de containers Linux precisam de fim de linha LF, mesmo clonados no Windows
+*.sh text eol=lf
+Dockerfile* text eol=lf

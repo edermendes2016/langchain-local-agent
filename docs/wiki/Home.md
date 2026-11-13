@@ -6,6 +6,7 @@ Dois repositórios já vêm configurados como exemplo: o núcleo do **LangChain*
 
 ## Passo a passo
 
+0. [Rodar tudo com Docker](Docker): o caminho mais rápido, um comando e sem chaves
 1. [LM Studio](LM-Studio): subir o modelo local e o servidor
 2. [Ambiente Python](Ambiente-Python): instalar dependências
 3. [Indexação](Indexacao): gravar o código no ChromaDB
