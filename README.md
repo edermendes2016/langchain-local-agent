@@ -10,7 +10,7 @@ cd langchain-local-agent
 docker compose up --build
 ```
 
-Quando o log mostrar **"Pronto! Abra http://localhost:8501"**, abra o endereço e pergunte. Na primeira vez o Docker constrói as imagens, o Ollama baixa os modelos sozinho (`qwen2.5-coder:3b` e `nomic-embed-text`, cerca de 2 GB) e o agente indexa o núcleo do LangChain (`libs/core`), o que leva uns 10 minutos em CPU. Nas próximas vezes sobe em segundos, porque modelos e índice ficam em volumes.
+Quando o log mostrar **"Pronto! Abra http://localhost:8501"**, abra o endereço e pergunte. Na primeira vez o Docker constrói as imagens, o Ollama baixa os modelos sozinho (`qwen2.5-coder:3b` e `nomic-embed-text`, cerca de 2 GB) e o agente indexa o núcleo do LangChain (`libs/core`), o que leva uns 10 minutos em CPU. O tempo total da primeira execução depende principalmente da velocidade da internet (imagens e modelos somam vários GB). Nas próximas vezes sobe em segundos, porque modelos e índice ficam em volumes.
 
 **Requisitos:** Docker Desktop com Compose v2, 8 GB de RAM liberados para o Docker, cerca de 15 GB de disco livre e internet apenas na primeira execução. GPU é opcional.
 
