@@ -26,8 +26,8 @@ Dois repositórios já vêm configurados como exemplo: o núcleo do **LangChain*
 ## Como funciona
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/fluxo-simples-dark.svg">
-  <img alt="Fluxo em seis passos: código, blocos, busca vetorial, contexto, prompt e resposta" src="images/fluxo-simples-light.svg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wiki/edermendes2016/langchain-local-agent/images/fluxo-simples-dark.svg">
+  <img alt="Fluxo em seis passos: código, blocos, busca vetorial, contexto, prompt e resposta" src="https://raw.githubusercontent.com/wiki/edermendes2016/langchain-local-agent/images/fluxo-simples-light.svg" width="100%">
 </picture>
 
 A visão completa, com os serviços do Docker, está em [Rodar tudo com Docker](Docker).

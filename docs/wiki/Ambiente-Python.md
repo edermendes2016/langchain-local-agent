@@ -23,6 +23,4 @@ Se o PowerShell bloquear a ativação do ambiente, rode uma vez `Set-ExecutionPo
 pip install --retries 10 --timeout 60 -r requirements.txt
 ```
 
-![Ambiente ativado e pacotes instalados](images/02-ambiente.png)
-
 Próximo: [Indexação](Indexacao)

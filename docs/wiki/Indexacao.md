@@ -21,8 +21,6 @@ Os metadados guardam arquivo, linha inicial e final, extensão e nome do reposit
 
 Resultado nesta máquina: `langchain` com 187 arquivos e 2.347 blocos em cerca de 45 s; `aws-quiz` com 12 arquivos e 40 blocos em cerca de 1 s. Na primeira execução o modelo de embeddings `all-MiniLM-L6-v2` é baixado.
 
-![Indexação concluída](images/03-indexacao.png)
-
 Para refazer do zero: `python agent_local.py index -r langchain --reset`.
 
 Próximo: [Consulta RAG](Consulta-RAG)

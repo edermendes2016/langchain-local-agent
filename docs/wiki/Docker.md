@@ -13,8 +13,8 @@ Abra http://localhost:8501 quando o log mostrar "Pronto!".
 ## Arquitetura
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="images/arquitetura-rag-dark.svg">
-  <img alt="Arquitetura do agente RAG local: indexação no ChromaDB e consulta com reranking e LLM local" src="images/arquitetura-rag-light.svg" width="100%">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wiki/edermendes2016/langchain-local-agent/images/arquitetura-rag-dark.svg">
+  <img alt="Arquitetura do agente RAG local: indexação no ChromaDB e consulta com reranking e LLM local" src="https://raw.githubusercontent.com/wiki/edermendes2016/langchain-local-agent/images/arquitetura-rag-light.svg" width="100%">
 </picture>
 
 ## O que sobe

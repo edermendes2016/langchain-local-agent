@@ -6,8 +6,6 @@ streamlit run app.py
 
 O navegador abre em `http://localhost:8501`.
 
-![Interface Streamlit com resposta, fontes e trechos](images/05-streamlit.png)
-
 ## O que a interface mostra
 
 - **Barra lateral**: seletor de repositório (lido do `repos.yaml`), controle de `k`, chave para gerar ou não a resposta com o LLM, quantidade de blocos indexados e status do LM Studio (online ou offline).

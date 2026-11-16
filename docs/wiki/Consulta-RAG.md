@@ -12,8 +12,6 @@ O script executa, nesta ordem:
 2. Os blocos viram o contexto de um prompt que obriga o modelo a responder só com o que está nos trechos e a citar `[n] arquivo:linha`.
 3. O prompt vai para o `prism-ml/bonsai-27b` pelo `ChatOpenAI`, e a resposta aparece no terminal.
 
-![Consulta e resposta do modelo local](images/04-consulta.png)
-
 ## Como ler a saída
 
 - **Documentos recuperados**: confira se os arquivos fazem sentido para a pergunta. Se não fazem, a resposta também não fará.
