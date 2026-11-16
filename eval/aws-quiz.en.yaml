@@ -1,0 +1,49 @@
+# The same 12 reference questions as eval/aws-quiz.yaml, written in English.
+- id: aq01
+  question: Where are the player name and the score sent to the ranking validated?
+  expected_files: [backend/lambda_function.py]
+  keywords: [validate]
+- id: aq02
+  question: How does the Lambda backend validate the user's answer in the quiz?
+  expected_files: [backend/lambda_function.py]
+  keywords: [score]
+- id: aq03
+  question: What is the maximum score per question that the backend accepts?
+  expected_files: [backend/lambda_function.py]
+  keywords: ["150"]
+- id: aq04
+  question: Which DynamoDB table stores the scores and what is the billing mode?
+  expected_files: [infra/template.yaml]
+  keywords: [PAY_PER_REQUEST]
+- id: aq05
+  question: How is public HTTP access to the Lambda function and CORS configured?
+  expected_files: [infra/template.yaml]
+  keywords: [Function]
+- id: aq06
+  question: Which AWS resources does the CloudFormation stack create?
+  expected_files: [infra/template.yaml]
+  keywords: [Lambda]
+- id: aq07
+  question: How does the deploy script inject the API URL into the front end?
+  expected_files: [scripts/deploy.sh]
+  keywords: [config.js]
+- id: aq08
+  question: How do I remove all the resources created on AWS?
+  expected_files: [scripts/limpar.sh]
+  keywords: [delete-stack]
+- id: aq09
+  question: How many seconds does the player have per question and how is the speed bonus calculated?
+  expected_files: [frontend/app.js]
+  keywords: ["20"]
+- id: aq10
+  question: How does the front end store the ranking when the API is not configured?
+  expected_files: [frontend/app.js, frontend/config.js]
+  keywords: [localStorage]
+- id: aq11
+  question: Where are the automated tests of the backend?
+  expected_files: [tests/test_lambda.py]
+  keywords: [unittest]
+- id: aq12
+  question: Where are the quiz questions with options and explanations?
+  expected_files: [frontend/questions.js]
+  keywords: [categoria]

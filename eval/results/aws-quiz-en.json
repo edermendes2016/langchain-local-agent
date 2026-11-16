@@ -1,0 +1,473 @@
+{
+  "repo": "aws-quiz",
+  "date": "2026-11-16",
+  "fetch_k": 40,
+  "metrics": {
+    "vector": {
+      "hit@1": 0.5,
+      "recall@1": 0.4583333333333333,
+      "hit@3": 0.8333333333333334,
+      "recall@3": 0.8333333333333334,
+      "hit@5": 0.8333333333333334,
+      "recall@5": 0.8333333333333334,
+      "MRR": 0.673941798941799
+    },
+    "rerank": {
+      "hit@1": 0.8333333333333334,
+      "recall@1": 0.7916666666666666,
+      "hit@3": 0.9166666666666666,
+      "recall@3": 0.9166666666666666,
+      "hit@5": 1.0,
+      "recall@5": 1.0,
+      "MRR": 0.8916666666666666
+    }
+  },
+  "questions": [
+    {
+      "id": "aq01",
+      "question": "Where are the player name and the score sent to the ranking validated?",
+      "expected": [
+        "backend/lambda_function.py"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "tests/test_lambda.py",
+          "infra/template.yaml",
+          "frontend/app.js",
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "tests/test_lambda.py",
+          "infra/template.yaml",
+          "infra/template.yaml"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "frontend/app.js",
+          "tests/test_lambda.py",
+          "infra/template.yaml",
+          "backend/lambda_function.py",
+          "README.md",
+          "infra/template.yaml",
+          "tests/test_lambda.py",
+          "frontend/index.html"
+        ]
+      }
+    },
+    {
+      "id": "aq02",
+      "question": "How does the Lambda backend validate the user's answer in the quiz?",
+      "expected": [
+        "backend/lambda_function.py"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "backend/lambda_function.py",
+          "tests/test_lambda.py",
+          "infra/template.yaml",
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "tests/test_lambda.py",
+          "tests/test_lambda.py"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "backend/lambda_function.py",
+          "backend/lambda_function.py",
+          "backend/lambda_function.py",
+          "frontend/questions.js",
+          "tests/test_lambda.py",
+          "tests/test_lambda.py",
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "infra/template.yaml"
+        ]
+      }
+    },
+    {
+      "id": "aq03",
+      "question": "What is the maximum score per question that the backend accepts?",
+      "expected": [
+        "backend/lambda_function.py"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "tests/test_lambda.py",
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "backend/lambda_function.py",
+          "frontend/app.js",
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "infra/template.yaml"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "backend/lambda_function.py",
+          "backend/lambda_function.py",
+          "backend/lambda_function.py",
+          "frontend/questions.js",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/app.js"
+        ]
+      }
+    },
+    {
+      "id": "aq04",
+      "question": "Which DynamoDB table stores the scores and what is the billing mode?",
+      "expected": [
+        "infra/template.yaml"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "README.md",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "infra/template.yaml",
+          "backend/lambda_function.py",
+          "frontend/app.js",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "README.md",
+          "tests/test_lambda.py",
+          "frontend/index.html",
+          "infra/template.yaml",
+          "infra/template.yaml"
+        ]
+      }
+    },
+    {
+      "id": "aq05",
+      "question": "How is public HTTP access to the Lambda function and CORS configured?",
+      "expected": [
+        "infra/template.yaml"
+      ],
+      "vector": {
+        "rank": 2,
+        "files": [
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "frontend/app.js",
+          "frontend/questions.js",
+          "tests/test_lambda.py",
+          "tests/test_lambda.py"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "infra/template.yaml",
+          "backend/lambda_function.py",
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "backend/lambda_function.py",
+          "tests/test_lambda.py",
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "frontend/app.js"
+        ]
+      }
+    },
+    {
+      "id": "aq06",
+      "question": "Which AWS resources does the CloudFormation stack create?",
+      "expected": [
+        "infra/template.yaml"
+      ],
+      "vector": {
+        "rank": 2,
+        "files": [
+          "frontend/questions.js",
+          "infra/template.yaml",
+          "scripts/limpar.sh",
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "README.md",
+          "frontend/questions.js",
+          "README.md"
+        ]
+      },
+      "rerank": {
+        "rank": 5,
+        "files": [
+          "scripts/deploy.sh",
+          "scripts/limpar.sh",
+          "frontend/questions.js",
+          "tests/test_lambda.py",
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "README.md",
+          "frontend/index.html",
+          "frontend/questions.js",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq07",
+      "question": "How does the deploy script inject the API URL into the front end?",
+      "expected": [
+        "scripts/deploy.sh"
+      ],
+      "vector": {
+        "rank": 3,
+        "files": [
+          "frontend/config.js",
+          "infra/template.yaml",
+          "scripts/deploy.sh",
+          "scripts/user-data.sh",
+          "frontend/questions.js",
+          "frontend/app.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "infra/template.yaml",
+          "infra/template.yaml"
+        ]
+      },
+      "rerank": {
+        "rank": 2,
+        "files": [
+          "frontend/config.js",
+          "scripts/deploy.sh",
+          "frontend/app.js",
+          "frontend/app.js",
+          "README.md",
+          "frontend/app.js",
+          "frontend/index.html",
+          "frontend/app.js",
+          "scripts/user-data.sh",
+          "frontend/app.js"
+        ]
+      }
+    },
+    {
+      "id": "aq08",
+      "question": "How do I remove all the resources created on AWS?",
+      "expected": [
+        "scripts/limpar.sh"
+      ],
+      "vector": {
+        "rank": 2,
+        "files": [
+          "infra/template.yaml",
+          "scripts/limpar.sh",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "README.md",
+          "infra/template.yaml",
+          "scripts/deploy.sh",
+          "frontend/questions.js",
+          "scripts/user-data.sh",
+          "frontend/questions.js"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "scripts/limpar.sh",
+          "scripts/deploy.sh",
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "infra/template.yaml",
+          "tests/test_lambda.py",
+          "README.md",
+          "backend/lambda_function.py",
+          "infra/template.yaml"
+        ]
+      }
+    },
+    {
+      "id": "aq09",
+      "question": "How many seconds does the player have per question and how is the speed bonus calculated?",
+      "expected": [
+        "frontend/app.js"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "frontend/app.js",
+          "backend/lambda_function.py",
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "frontend/app.js",
+          "tests/test_lambda.py",
+          "infra/template.yaml",
+          "infra/template.yaml",
+          "frontend/index.html",
+          "frontend/app.js"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "frontend/app.js",
+          "backend/lambda_function.py",
+          "frontend/app.js",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/index.html",
+          "infra/template.yaml",
+          "frontend/questions.js",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq10",
+      "question": "How does the front end store the ranking when the API is not configured?",
+      "expected": [
+        "frontend/app.js",
+        "frontend/config.js"
+      ],
+      "vector": {
+        "rank": 1,
+        "files": [
+          "frontend/app.js",
+          "infra/template.yaml",
+          "frontend/config.js",
+          "frontend/app.js",
+          "infra/template.yaml",
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "backend/lambda_function.py",
+          "infra/template.yaml",
+          "frontend/app.js"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "frontend/app.js",
+          "frontend/app.js",
+          "frontend/config.js",
+          "frontend/app.js",
+          "frontend/app.js",
+          "frontend/index.html",
+          "frontend/style.css",
+          "infra/template.yaml",
+          "scripts/deploy.sh",
+          "frontend/app.js"
+        ]
+      }
+    },
+    {
+      "id": "aq11",
+      "question": "Where are the automated tests of the backend?",
+      "expected": [
+        "tests/test_lambda.py"
+      ],
+      "vector": {
+        "rank": 7,
+        "files": [
+          "scripts/user-data.sh",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "frontend/config.js",
+          "frontend/questions.js",
+          "tests/test_lambda.py",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "README.md"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "tests/test_lambda.py",
+          "tests/test_lambda.py",
+          "frontend/questions.js",
+          "backend/lambda_function.py",
+          "backend/lambda_function.py",
+          "frontend/questions.js",
+          "frontend/index.html",
+          "backend/lambda_function.py",
+          "frontend/app.js",
+          "frontend/questions.js"
+        ]
+      }
+    },
+    {
+      "id": "aq12",
+      "question": "Where are the quiz questions with options and explanations?",
+      "expected": [
+        "frontend/questions.js"
+      ],
+      "vector": {
+        "rank": 9,
+        "files": [
+          "frontend/index.html",
+          "frontend/index.html",
+          "backend/lambda_function.py",
+          "frontend/app.js",
+          "infra/template.yaml",
+          "README.md",
+          "scripts/user-data.sh",
+          "frontend/config.js",
+          "frontend/questions.js",
+          "infra/template.yaml"
+        ]
+      },
+      "rerank": {
+        "rank": 1,
+        "files": [
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/questions.js",
+          "frontend/app.js",
+          "frontend/questions.js",
+          "backend/lambda_function.py"
+        ]
+      }
+    }
+  ],
+  "answers": []
+}

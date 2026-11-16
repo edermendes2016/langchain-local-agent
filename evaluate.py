@@ -65,11 +65,12 @@ def main():
     ap.add_argument("--fetch-k", type=int, default=40, help="Candidatos buscados antes do reranking")
     ap.add_argument("--answers", action="store_true", help="Gera respostas com o LLM local e confere")
     ap.add_argument("-k", type=int, default=6, help="Blocos enviados ao LLM ao avaliar respostas")
+    ap.add_argument("--dataset", default=None, help="Arquivo em eval/ sem a extensão (ex.: langchain.en)")
     ap.add_argument("--tag", default="", help="Sufixo do arquivo de resultado (ex.: bm25)")
     args = ap.parse_args()
 
     cfg = get_repo(args.repo)
-    dataset = yaml.safe_load((BASE_DIR / "eval" / f"{cfg.name}.yaml").read_text(encoding="utf-8"))
+    dataset = yaml.safe_load((BASE_DIR / "eval" / f"{args.dataset or cfg.name}.yaml").read_text(encoding="utf-8"))
     retriever = Retriever(cfg)
     if retriever.count() == 0:
         sys.exit(f"Coleção vazia. Rode: python agent_local.py index -r {cfg.name}")
