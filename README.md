@@ -55,3 +55,7 @@ Para parar: `docker compose down` (mantém os dados) ou `docker compose down -v`
 ## Sem Docker
 
 Também roda direto no Windows com o LM Studio como LLM. O passo a passo, as decisões técnicas (chunking por linguagem, reranking, avaliação com perguntas de referência) e os resultados estão na **[wiki](https://github.com/edermendes2016/langchain-local-agent/wiki)**, versionada em [`docs/wiki`](docs/wiki).
+
+## Licença
+
+Distribuído sob a licença MIT. Veja o arquivo [LICENSE](LICENSE). Copyright (c) 2026 Eder Mendes Amaral.
