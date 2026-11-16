@@ -1,6 +1,6 @@
 # Agente RAG local para repositórios de código
 
-Pergunte em português sobre o código de qualquer repositório e receba respostas com arquivo e linha. Tudo roda na sua máquina com Docker: LLM e embeddings no Ollama, vetores no ChromaDB, reranking e interface web. **Sem chaves de API e sem passos manuais.**
+Pergunte sobre o código de qualquer repositório e receba respostas com arquivo e linha. Tudo roda na sua máquina com Docker: LLM e embeddings no Ollama, vetores no ChromaDB, reranking e interface web. **Sem chaves de API e sem passos manuais.**
 
 ## Rodar (3 comandos)
 
@@ -10,51 +10,19 @@ cd langchain-local-agent
 docker compose up --build
 ```
 
-Quando o log mostrar **"Pronto! Abra http://localhost:8501"**, abra o endereço e pergunte. Na primeira vez o Docker constrói as imagens, o Ollama baixa os modelos sozinho (`qwen2.5-coder:3b` e `nomic-embed-text`, cerca de 2 GB) e o agente indexa o núcleo do LangChain (`libs/core`), o que leva uns 10 minutos em CPU. O tempo total da primeira execução depende principalmente da velocidade da internet (imagens e modelos somam vários GB). Nas próximas vezes sobe em segundos, porque modelos e índice ficam em volumes.
+Quando o log mostrar **"Pronto! Abra http://localhost:8501"**, abra o endereço e pergunte. Na primeira vez o Ollama baixa os modelos sozinho (cerca de 2 GB) e o agente indexa o núcleo do LangChain, o que leva uns 10 minutos em CPU. O tempo total da primeira execução depende principalmente da velocidade da internet. Nas próximas vezes sobe em segundos.
 
 **Requisitos:** Docker Desktop com Compose v2, 8 GB de RAM liberados para o Docker, cerca de 15 GB de disco livre e internet apenas na primeira execução. GPU é opcional.
 
-## Arquitetura
+## Documentação
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/img/arquitetura-rag-dark.svg">
-  <img alt="Arquitetura do agente RAG local: indexação no ChromaDB e consulta com reranking e LLM local" src="docs/img/arquitetura-rag-light.svg" width="100%">
-</picture>
+Tudo o mais está na **[wiki](https://github.com/edermendes2016/langchain-local-agent/wiki)**:
 
-Os diagramas são editáveis: abra [`docs/img/arquitetura-rag.excalidraw`](docs/img/arquitetura-rag.excalidraw) em [excalidraw.com](https://excalidraw.com).
-
-Pergunta → busca no Chroma (`collection.query()`) → reranking com cross-encoder → trechos com arquivo e linha → LLM local → resposta citando as fontes.
-
-## Para que serve
-
-- **Entender código desconhecido** perguntando em português, com arquivo, linha e trecho de cada resposta.
-- **Empresas que não podem mandar código para IA paga na nuvem**: tudo roda local, sem chaves, sem custo por token. Os limites do modelo pequeno e o caminho para escalar estão na wiki ([Uso em empresas](docs/wiki/Uso-em-empresas.md)).
-- **Treinar o olhar crítico sobre respostas de IA** com o [Dojo](docs/wiki/Dojo.md).
-
-## Dojo
-
-Em [`dojo/loja`](dojo/loja) há um repositório de treino com 3 bugs plantados e 9 testes (4 falham por causa dos bugs). Indexe, investigue com o agente, confira cada resposta no código e só depois abra o [gabarito](dojo/gabarito/loja.md). A wiki traz o ciclo de treino, cenários de falha reais (pergunta sem resposta no código, índice desatualizado, resposta com fonte certa e conclusão errada) e um prompt para gerar o seu próprio dojo.
-
-```bash
-docker compose exec agent python agent_local.py index -r dojo-loja
-docker compose exec agent python agent_local.py ask "A partir de qual valor o frete é grátis?" -r dojo-loja
-```
-
-## Usar sem a interface
-
-```bash
-docker compose exec agent python agent_local.py ask "Onde fica a classe BaseChatModel?" -r langchain
-```
-
-## Configurar
-
-Copie `.env.example` para `.env` para trocar modelos (`LLM_MODEL`, `EMBEDDING_MODEL`), o reranker (`cross-encoder`, `bm25` ou `none`) ou a porta. Para analisar outro repositório, adicione um bloco em [`docker/repos.docker.yaml`](docker/repos.docker.yaml) e liste o nome em `BOOTSTRAP_REPOS`. Com GPU NVIDIA: `docker compose -f docker-compose.yml -f docker-compose.gpu.yml up`.
-
-Para parar: `docker compose down` (mantém os dados) ou `docker compose down -v` (apaga tudo).
-
-## Sem Docker
-
-Também roda direto no Windows com o LM Studio como LLM. O passo a passo, as decisões técnicas (chunking por linguagem, reranking, avaliação com perguntas de referência) e os resultados estão na **[wiki](https://github.com/edermendes2016/langchain-local-agent/wiki)**, versionada em [`docs/wiki`](docs/wiki).
+- [Arquitetura](https://github.com/edermendes2016/langchain-local-agent/wiki/Arquitetura): como o agente funciona, com o diagrama completo.
+- [Rodar tudo com Docker](https://github.com/edermendes2016/langchain-local-agent/wiki/Docker): configuração, modelos, GPU e outros repositórios.
+- [Dojo](https://github.com/edermendes2016/langchain-local-agent/wiki/Dojo): treinar o olhar crítico sobre respostas de IA com repositórios com bugs.
+- [Uso em empresas](https://github.com/edermendes2016/langchain-local-agent/wiki/Uso-em-empresas): privacidade, custo, limites do modelo e como escalar.
+- [Avaliação](https://github.com/edermendes2016/langchain-local-agent/wiki/Avaliacao): resultados com perguntas de referência.
 
 ## Licença
 

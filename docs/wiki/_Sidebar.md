@@ -12,6 +12,7 @@
 - [Outro repositório](Outro-repositorio)
 
 **Entender**
+- [Arquitetura](Arquitetura)
 - [Para que serve e uso em empresas](Uso-em-empresas)
 - [Dojo: olhar crítico com IA](Dojo)
 - [Boas práticas de RAG](Boas-praticas-RAG)

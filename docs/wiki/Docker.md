@@ -10,12 +10,17 @@ docker compose up --build
 
 Abra http://localhost:8501 quando o log mostrar "Pronto!".
 
+Também dá para perguntar pelo terminal e, quando terminar, parar tudo:
+
+```bash
+docker compose exec agent python agent_local.py ask "Onde fica a classe BaseChatModel?" -r langchain
+docker compose down      # mantém modelos e índice
+docker compose down -v   # apaga tudo
+```
+
 ## Arquitetura
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/wiki/edermendes2016/langchain-local-agent/images/arquitetura-rag-dark.svg">
-  <img alt="Arquitetura do agente RAG local: indexação no ChromaDB e consulta com reranking e LLM local" src="https://raw.githubusercontent.com/wiki/edermendes2016/langchain-local-agent/images/arquitetura-rag-light.svg" width="100%">
-</picture>
+O desenho completo, com as fases de indexação e consulta, está na página [Arquitetura](Arquitetura).
 
 ## O que sobe
 

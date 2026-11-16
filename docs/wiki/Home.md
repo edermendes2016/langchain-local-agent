@@ -16,6 +16,7 @@ Dois repositórios já vêm configurados como exemplo: o núcleo do **LangChain*
 
 ## Decisões técnicas
 
+- [Arquitetura](Arquitetura)
 - [Para que serve e uso em empresas](Uso-em-empresas)
 - [Dojo: treinar o olhar crítico com IA](Dojo)
 - [Boas práticas de RAG aplicadas](Boas-praticas-RAG)
@@ -30,4 +31,4 @@ Dois repositórios já vêm configurados como exemplo: o núcleo do **LangChain*
   <img alt="Fluxo em seis passos: código, blocos, busca vetorial, contexto, prompt e resposta" src="https://raw.githubusercontent.com/wiki/edermendes2016/langchain-local-agent/images/fluxo-simples-light.svg" width="100%">
 </picture>
 
-A visão completa, com os serviços do Docker, está em [Rodar tudo com Docker](Docker).
+A visão completa, com os serviços do Docker, está em [Arquitetura](Arquitetura).
