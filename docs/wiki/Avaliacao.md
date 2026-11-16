@@ -112,7 +112,16 @@ O que os números dizem:
 
 Duas ressalvas. A amostra é pequena (18 e 12 perguntas por idioma). E o Docker usa outros modelos (`nomic-embed-text` e `qwen2.5-coder:3b`), que **não foram medidos em inglês**; para ele, um embedding multilíngue disponível no Ollama (como o `bge-m3`) é o caminho natural, mas ainda precisa ser testado.
 
-**Idioma da resposta.** Independente da busca, o prompt de sistema atual manda responder em português do Brasil, então uma pergunta em inglês recebe resposta em português. Dá para trocar para responder no idioma da pergunta com uma linha no prompt.
+### Pontos que podem ser melhorados (nada disso foi implementado)
+
+Estes são os achados dos testes acima, registrados como melhorias futuras. O projeto continua como está: os padrões atuais não foram alterados.
+
+1. **Idioma da resposta.** O prompt de sistema manda responder em português do Brasil, então uma pergunta em inglês recebe resposta em português. Isso vem do texto do prompt e não é um limite do modelo. Uma melhoria simples seria pedir resposta no idioma da pergunta. Não foi testado ao vivo, porque o LM Studio estava desligado durante os testes.
+2. **Embedding multilíngue como padrão.** É a melhoria com maior ganho medido para perguntas em português (acerto no top 3 de 0,56 para 0,89 no langchain, e de 0,25 para 0,83 no aws-quiz), ao custo de uma pequena perda em inglês e de reindexar o repositório. No Docker, o candidato natural é um modelo multilíngue do Ollama como o `bge-m3`, que ainda não foi testado.
+3. **Reranker por idioma.** O reranker inglês ajuda perguntas em inglês e piora as em português quando o embedding já é bom. O reranker multilíngue testado (`mmarco-mMiniLMv2-L12-H384-v1`) não superou a busca vetorial sozinha. Uma melhoria seria detectar o idioma da pergunta e ligar o reranker só para inglês, ou testar outros rerankers multilíngues.
+4. **Medir o que ficou de fora.** A amostra é pequena (18 e 12 perguntas por idioma), a stack Docker (`nomic-embed-text` e `qwen2.5-coder:3b`) não foi medida em inglês, e a qualidade das respostas geradas em inglês também não foi avaliada, só a recuperação.
+
+O que está confirmado pelos testes: a resposta sai sempre em português por causa do prompt, a busca é melhor em inglês com os modelos atuais, e os números acima foram medidos nesta máquina. O que é hipótese: que o `bge-m3` e a mudança de prompt resolvam o problema no Docker.
 
 ## Próximas melhorias sugeridas
 

@@ -34,6 +34,8 @@ Leitura direta: o modelo de 3 bilhões de parâmetros é o que roda em qualquer 
 
 Outro limite que não depende do modelo: se o trecho certo não for recuperado, nenhum modelo acerta. Por isso a recuperação é medida separadamente.
 
+**Idioma.** Nos testes, a busca foi melhor com perguntas em inglês do que em português, porque os modelos padrão são centrados em inglês, e a resposta sai sempre em português por causa do prompt. Para equipes que trabalham em português, vale considerar um embedding multilíngue. Os números e as melhorias possíveis estão em [Avaliação](Avaliacao).
+
 ## Como escalar
 
 1. **Modelo melhor.** Troque `LLM_MODEL` no `.env` (por exemplo `qwen2.5-coder:7b`) e, com GPU NVIDIA, use `docker-compose.gpu.yml`.

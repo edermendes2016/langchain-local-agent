@@ -9,5 +9,7 @@
 | Aviso de symlinks do Hugging Face | Windows sem modo desenvolvedor | Inofensivo. Silencie com `$env:HF_HUB_DISABLE_SYMLINKS_WARNING=1` |
 | Resposta diz que o contexto não tem a informação | A recuperação trouxe blocos errados | Use nomes exatos de classes, funções e arquivos, aumente `-k` ou ligue o reranking |
 | Resposta lenta | Modelo de 27B | Normal. Reduza `-k` ou troque `llm_model` por um modelo menor |
+| Pergunta em inglês é respondida em português | O prompt de sistema manda responder em português do Brasil | Limitação conhecida, ainda não alterada. Veja [Avaliação](Avaliacao#pontos-que-podem-ser-melhorados-nada-disso-foi-implementado) |
+| Perguntas em português recuperam menos que em inglês | Os modelos padrão de embedding e de reranking são centrados em inglês | Limitação conhecida e medida. Uma pergunta em inglês ou nomes exatos de classes e funções ajudam. Melhorias em [Avaliação](Avaliacao#pontos-que-podem-ser-melhorados-nada-disso-foi-implementado) |
 
 Variáveis de ambiente: `REPOS_CONFIG`, `CHROMA_PATH`, `EMBEDDING_MODEL`, `RERANKER_MODEL`, `LLM_BASE_URL`, `LLM_MODEL`.
